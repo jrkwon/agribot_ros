@@ -1,0 +1,33 @@
+<?xml version="1"?>
+<launch>
+  <arg name="localization" default="false"/>
+  <arg name="wait_for_transform" default="0.2"/>
+
+  <arg name="camera_model" default="d435i"/> 
+  <arg name="database_path" default="$(find scout_bringup)/maps/rtabmap_$(arg camera_model).db"/>
+  
+  <arg name="publish_tf_map"          default="true"/>
+  
+  <arg     if="$(arg localization)" name="args"  default=""/>
+  <arg unless="$(arg localization)" name="args"  default="--delete_db_on_start"/>
+
+  <!-- group ns="rtabmap" -->
+  <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
+      <arg name="args" value="$(arg args) --Optimizer/GravitySigma 0.3"/>
+      <arg name="rgb_topic" value="/camera/color/image_raw"/>
+      <arg name="depth_topic" value="/camera/aligned_depth_to_color/image_raw"/>
+      <arg name="camera_info_topic" value="/camera/color/camera_info"/>
+      <arg name="depth_camera_info_topic" value="/camera/depth/camera_info"/>
+      <arg name="approx_sync" value="false"/>
+      <arg name="wait_imu_to_init" value="true"/>
+      <arg name="imu_topic" value="/rtabmap/imu"/>
+
+      <arg name="localization" value="$(arg localization)"/>
+      <arg name="database_path" value="$(arg database_path)"/>
+
+      <arg name="rtabmapviz" value="true"/>
+      <arg name="rviz" value="true"/>
+
+  </include>
+  <!-- /group -->
+</launch>

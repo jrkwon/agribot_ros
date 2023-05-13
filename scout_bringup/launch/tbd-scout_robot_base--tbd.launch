@@ -1,0 +1,37 @@
+<launch>
+
+    <arg name = "model" default = "scout_v2"/>
+
+    <arg name="port_name" value="can0" />
+    <arg name="simulated_robot" value="false" />
+    <!-- arg name="model_xacro" default="$(find scout_description)/urdf/$(arg model).xacro" / -->
+    <arg name="odom_topic_name" default="odom" />
+    <arg name="is_scout_mini" default="true" />
+    <arg name="pub_tf" default="false" />
+
+    <include file="$(find scout_base)/launch/scout_base.launch">
+        <arg name="port_name" default="$(arg port_name)" />
+        <arg name="simulated_robot" default="$(arg simulated_robot)" />
+        <arg name="odom_topic_name" default="$(arg odom_topic_name)" />
+	    <arg name="pub_tf" default="$(arg pub_tf)" />
+    </include>
+
+    <!-- 5/5/2023 Jaerock Add Joystick -->
+    <include file="$(find teleop_twist_joy)/launch/teleop.launch" >
+        <arg name = "joy_config" default = "xbox" />
+    </include>
+
+    <!-- 5/5/2023 Jaerock Add Intel RealSense2 -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+        <arg name = "filters" default = "pointcloud" />
+        <arg name = "align_depth" default = "true" />
+        <arg name = "unite_imu_method" default="linear_interpolation" />
+        <arg name = "enable_gyro" default="true" />
+        <arg name = "enable_accel" default="true" />
+    </include>
+ 
+    <include file="$(find scout_description)/launch/display_$(arg model).launch" >
+        <arg name = "model" default = "$(arg model)" />
+    </include>
+
+</launch>

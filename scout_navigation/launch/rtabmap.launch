@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+	<remap from="map" to="/rtabmap/proj_map"/>
+    
+	<!--- Run Move Base -->
+    <include file="$(find scout_navigation)/launch/move_base.launch" />
+
+</launch>
+
