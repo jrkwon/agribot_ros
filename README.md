@@ -1,5 +1,31 @@
 # ROS Packages for Scout Mobile Robot
 
+## Contributors
+
+* Jaerock Kwon, University of Michigan-Dearborn
+* Woojin Jeong, Wapple Cloud
+* Youngseek Cho, Wonkwang University
+
+## History
+
+This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
+
+## Packages
+
+* scout_base: 
+* scout_bringup:a ROS wrapper around [ugv_sdk](https://github.com/agilexrobotics/ugv_sdk) to monitor and control the scout robot
+* scout_control:
+* scout_description: URDF model for the mobile base, a sample urdf (scout_description/sample/scout_v2_nav.xacro) is provided for customized robot with addtional sensors
+* scout_gazebo:
+* scout_msgs: scout related message definitions
+* scout_navigation:
+* scout_viz:
+
+---
+**The original README**
+
+# ROS Packages for Scout Mobile Robot
+
 ## Packages
 
 This repository contains minimal packages to control the scout robot using ROS. 
