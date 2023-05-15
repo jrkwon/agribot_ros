@@ -6,11 +6,11 @@
 
   <group ns="joy_teleop">
 
-    <group unless="$(optenv SCOUT_LOGITECH 0)" >
+    <group unless="$(optenv SCOUT_LOGITECH 1)" >
       <rosparam command="load" file="$(find scout_control)/config/teleop_ps4.yaml" />
     </group>
 
-    <group if="$(optenv SCOUT_LOGITECH 0)" >
+    <group if="$(optenv SCOUT_LOGITECH 1)" >
       <rosparam command="load" file="$(find scout_control)/config/teleop_logitech.yaml" />
       <param name="joy_node/dev" value="$(arg joy_dev)" />
     </group>
