@@ -9,16 +9,4 @@
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-<!-- 
-    <arg name = "model" default = "scout_v2"/>
-    
-    <include file="$(find scout_description)/launch/$(arg model).launch" >
-        <arg name = "model" default = "$(arg model)" />
-    </include>
-
-    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
-        <arg name = "filters" default = "pointcloud" />
-    </include>
--->
-
 </launch>
