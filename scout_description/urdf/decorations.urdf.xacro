@@ -41,23 +41,23 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <xacro:property name="scout_rear_bumper_extend"     value="$(optenv SCOUT_REAR_BUMPER_EXTEND 0)" />
     <xacro:property name="scout_wibotic_bumper_enable"  value="$(optenv SCOUT_WIBOTIC_BUMPER 0)" />
 
-    <!-- Spawn Husky chassis -->
-    <link name="top_chassis_link">
+    <!-- Spawn chassis: No top chassis in Scout -->
+    <!-- link name="top_chassis_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://scout_description/meshes/top_chassis.dae" />
         </geometry>
       </visual>
-    </link>
+    </link -->
 
     <!-- Attach chassis to the robot -->
-    <joint name="top_chassis_joint" type="fixed">
+    <!-- joint name="top_chassis_joint" type="fixed">
       <parent link="base_link" />
       <child link="top_chassis_link" />
-    </joint>
+    </joint -->
 
-    <xacro:if value="$(optenv SCOUT_USER_RAIL_ENABLED true)">
+    <xacro:if value="$(optenv SCOUT_USER_RAIL_ENABLED false)">
       <!-- Spawn user rails -->
       <link name="user_rail_link">
         <visual>
@@ -69,7 +69,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
       <!-- Attach user rails to base link -->
       <joint name="user_rail" type="fixed">
-        <origin xyz="0.272 0 0.245" rpy="0 0 0" />
+        <origin xyz="0.24 0 0.12" rpy="0 0 0" />
         <parent link="base_link" />
         <child link="user_rail_link" />
       </joint>
@@ -175,7 +175,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <joint name="top_plate_joint" type="fixed">
           <parent link="base_link" />
           <child link="top_plate_link"/>
-          <origin xyz="0.0812 0 0.225" rpy="0 0 0"/>
+          <origin xyz="0 0 0.12" rpy="0 0 0"/>
         </joint>
         <!-- Top plate front link -->
         <joint name="top_plate_front_joint" type="fixed">
@@ -210,7 +210,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <joint name="top_plate_joint" type="fixed">
           <parent link="base_link" />
           <child link="top_plate_link"/>
-          <origin xyz="0.0812 0 0.245" rpy="0 0 0"/>
+          <origin xyz="0 0 0.12" rpy="0 0 0"/>
         </joint>
         <!-- Top plate front link -->
         <joint name="top_plate_front_joint" type="fixed">

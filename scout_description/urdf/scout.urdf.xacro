@@ -28,7 +28,7 @@
     <xacro:arg name="laser_3d_xyz" default="$(optenv SCOUT_LASER_3D_XYZ 0 0 0)" />
     <xacro:arg name="laser_3d_rpy" default="$(optenv SCOUT_LASER_3D_RPY 0 0 0)" />
 
-    <xacro:arg name="realsense_enabled" default="$(optenv SCOUT_REALSENSE_ENABLED 0)" />
+    <xacro:arg name="realsense_enabled" default="$(optenv SCOUT_REALSENSE_ENABLED 1)" />
     <xacro:arg name="realsense_xyz" default="$(optenv SCOUT_REALSENSE_XYZ 0 0 0)" />
     <xacro:arg name="realsense_rpy" default="$(optenv SCOUT_REALSENSE_RPY 0 0 0)" />
     <xacro:arg name="realsense_mount" default="$(optenv SCOUT_REALSENSE_MOUNT_FRAME sensor_arch_mount_link)" />
