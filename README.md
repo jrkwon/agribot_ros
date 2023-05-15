@@ -8,18 +8,35 @@
 
 ## History
 
-This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
+* This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
+* 5/14/2023: Reorganize the project to add sensors.
+* 5/14/2023: Fix wheel orientations.
+* 5/15/2023: Add a orchard world to test SLAM algorithms in simulation.
 
 ## Packages
 
-* scout_base: 
+* scout_base: robot node that communicates with the robot hardware
 * scout_bringup:a ROS wrapper around [ugv_sdk](https://github.com/agilexrobotics/ugv_sdk) to monitor and control the scout robot
-* scout_control:
+* scout_control: robot control
 * scout_description: URDF model for the mobile base, a sample urdf (scout_description/sample/scout_v2_nav.xacro) is provided for customized robot with addtional sensors
-* scout_gazebo:
+* scout_gazebo: simulation
 * scout_msgs: scout related message definitions
-* scout_navigation:
-* scout_viz:
+* scout_navigation: robot control
+* scout_viz: visualization of robot and sensors
+
+## Start Robot
+
+Launch ROS nodes
+
+* Start CAN bus
+    ```
+    $ ./start_can.sh
+    ```
+* Start the base node for scout
+
+    ```
+    $ roslaunch scout_bringup start.launch 
+    ```
 
 ---
 **The original README**

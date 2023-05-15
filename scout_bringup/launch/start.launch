@@ -8,7 +8,7 @@
     <arg name="odom_topic_name" default="odom" />
     <!-- arg name="is_scout_mini" default="true" / -->
     <arg name="pub_tf" default="true" />  <!-- odom tf -->
-    <arg name="joy" default="false"/>
+    <!-- arg name="joy" default="false"/ -->
  
     <include file="$(find scout_base)/launch/base.launch">
         <arg name="port_name" default="$(arg port_name)" />
@@ -17,12 +17,11 @@
 	    <arg name="pub_tf" default="$(arg pub_tf)"/>
     </include>
 
-    <group if="$(arg joy)">
-        <!-- 5/5/2023 Jaerock Add Joystick -->
+    <!-- group if="$(arg joy)">
         <include file="$(find teleop_twist_joy)/launch/teleop.launch" >
             <arg name = "joy_config" default = "xbox" />
         </include>
-    </group>
+    </group -->
 
     <!-- include file="$(find scout_description)/launch/display_$(arg model).launch" >
         <arg name = "model" default = "$(arg model)" />
