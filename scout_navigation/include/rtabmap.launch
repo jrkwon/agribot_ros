@@ -3,7 +3,7 @@
 	<remap from="map" to="/rtabmap/proj_map"/>
     
 	<!--- Run Move Base -->
-    <include file="$(find scout_navigation)/launch/move_base.launch" />
+    <include file="$(find scout_navigation)/launch/include/move_base.launch" />
 
 </launch>
 
