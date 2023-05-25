@@ -33,8 +33,8 @@
       <arg name="database_path" value="$(arg database_path)"/>
 
       <arg name="rtabmapviz" value="true"/>
-      <arg name="rviz" value="true"/>
-
+      <arg name="rviz" value="false"/>
   </include>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_navigation)/rviz/rtabmap.rviz" />
   <!-- /group -->
 </launch>
