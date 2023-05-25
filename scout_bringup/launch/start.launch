@@ -9,13 +9,18 @@
     <!-- arg name="is_scout_mini" default="true" / -->
     <arg name="pub_tf" default="true" />  <!-- odom tf -->
     <!-- arg name="joy" default="false"/ -->
- 
+    <arg name="realsense_enabled" default="$(optenv SCOUT_REALSENSE_ENABLED 1)" />
+
     <include file="$(find scout_base)/launch/base.launch">
         <arg name="port_name" default="$(arg port_name)" />
         <arg name="simulated_robot" default="$(arg simulated_robot)" />
         <arg name="odom_topic_name" default="$(arg odom_topic_name)" />
 	    <arg name="pub_tf" default="$(arg pub_tf)"/>
     </include>
+
+    <group if="$(arg realsense_enabled)">
+        <include file="$(find scout_bringup)/launch/include/realsense.launch" />
+    </group>
 
     <!-- group if="$(arg joy)">
         <include file="$(find teleop_twist_joy)/launch/teleop.launch" >
