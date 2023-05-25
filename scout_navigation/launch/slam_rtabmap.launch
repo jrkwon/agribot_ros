@@ -15,7 +15,7 @@
   <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
       <arg name="args" value="$(arg args) --Optimizer/GravitySigma 0.3"/>
       <arg name="rgb_topic" value="/camera/color/image_raw"/>
-      <arg name="depth_topic" value="/camera/depth/image_rect_raw"/> <!-- /aligned_depth_to_color/image_raw"/ -->
+      <arg name="depth_topic" value="/camera/aligned_depth_to_color/image_raw"/>
       <arg name="camera_info_topic" value="/camera/color/camera_info"/>
       <arg name="depth_camera_info_topic" value="/camera/depth/camera_info"/>
       <arg name="approx_sync" value="false"/>
