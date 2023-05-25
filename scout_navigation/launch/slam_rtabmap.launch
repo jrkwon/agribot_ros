@@ -2,9 +2,10 @@
 <launch>
   <arg name="localization" default="false"/>
   <arg name="wait_for_transform" default="0.2"/>
+  <arg name="map_id" default="" />  <!-- use location name -->
 
   <arg name="camera_model" default="d435i"/> 
-  <arg name="database_path" default="$(find scout_navigation)/maps/rtabmap_$(arg camera_model).db"/>
+  <arg name="database_path" default="$(find scout_navigation)/maps/rtabmap_$(arg camera_model)_$(arg map_id).db"/>
   
   <arg name="publish_tf_map"          default="true"/>
   
