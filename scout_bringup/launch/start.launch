@@ -19,7 +19,9 @@
     </include>
 
     <group if="$(arg realsense_enabled)">
-        <include file="$(find scout_bringup)/launch/include/realsense.launch" />
+        <include file="$(find scout_bringup)/launch/include/realsense.launch">
+            <arg name="camera" value="camera" />
+        </include>
     </group>
 
     <!-- group if="$(arg joy)">
