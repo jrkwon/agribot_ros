@@ -25,9 +25,9 @@
 
       <arg name="frame_id" value="base_link"/>
       <!-- inputs -->
-      <remap from="odom" to="/odom"/>
+      <!-- remap from="odom" to="/odom"/ -->
       <!-- output -->
-      <remap from="grid_map" to="/map"/>
+      <!-- remap from="grid_map" to="/map"/ -->
 
       <arg name="localization" value="$(arg localization)"/>
       <arg name="database_path" value="$(arg database_path)"/>
@@ -37,4 +37,7 @@
   </include>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_navigation)/rviz/rtabmap.rviz" />
   <!-- /group -->
+
+  <!--- Run Move Base -->
+  <include file="$(find scout_navigation)/launch/include/move_base.launch" />
 </launch>
