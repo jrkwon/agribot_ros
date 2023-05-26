@@ -7,7 +7,7 @@
     <!-- arg name="model_xacro" default="$(find scout_description)/urdf/$(arg model).xacro" / -->
     <arg name="odom_topic_name" default="odom" />
     <!-- arg name="is_scout_mini" default="true" / -->
-    <arg name="pub_tf" default="true" />  <!-- odom tf -->
+    <arg name="pub_tf" default="false" />  <!-- odom tf -->
     <!-- arg name="joy" default="false"/ -->
     <arg name="realsense_enabled" default="$(optenv SCOUT_REALSENSE_ENABLED 1)" />
 
