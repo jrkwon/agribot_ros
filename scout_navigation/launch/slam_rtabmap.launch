@@ -38,7 +38,9 @@
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_navigation)/rviz/rtabmap.rviz" />
   <!-- /group -->
 
-  <!--- Run Move Base -->
-  <remap from="map" to="/rtabmap/proj_map"/>
-  <include file="$(find scout_navigation)/launch/include/move_base.launch" />
+  <group if="$(arg localization)">
+    <!--- Run Move Base -->
+    <remap from="map" to="/rtabmap/proj_map"/>
+    <include file="$(find scout_navigation)/launch/include/move_base.launch" />
+  </group>
 </launch>
