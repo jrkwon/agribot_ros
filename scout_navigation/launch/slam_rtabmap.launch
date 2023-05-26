@@ -39,5 +39,6 @@
   <!-- /group -->
 
   <!--- Run Move Base -->
+  <remap from="map" to="/rtabmap/proj_map"/>
   <include file="$(find scout_navigation)/launch/include/move_base.launch" />
 </launch>
