@@ -7,9 +7,12 @@ Panels:
         - /Global Options1
         - /TF1
         - /Info1
+        - /Map1
         - /DepthCloud1/Auto Size1
+        - /Path1
+        - /Path2
       Splitter Ratio: 0.5416666865348816
-    Tree Height: 381
+    Tree Height: 519
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -108,8 +111,6 @@ Visualization Manager:
           Value: false
         camera_imu_optical_frame:
           Value: false
-        camera_link:
-          Value: false
         camera_realsense:
           Value: true
         camera_realsense_gazebo:
@@ -122,6 +123,8 @@ Visualization Manager:
           Value: false
         inertial_link:
           Value: false
+        laser_frame:
+          Value: true
         map:
           Value: true
         odom:
@@ -150,9 +153,8 @@ Visualization Manager:
           odom:
             base_link:
               base_footprint:
-                {}
-              camera_link:
-                {}
+                laser_frame:
+                  {}
               front_mount:
                 {}
               imu_link:
@@ -260,14 +262,14 @@ Visualization Manager:
       Virtual: 255; 0; 255
     - Alpha: 1
       Class: rviz/Map
-      Color Scheme: map
+      Color Scheme: costmap
       Draw Behind: false
-      Enabled: false
+      Enabled: true
       Name: Map
-      Topic: /rtabmap/octomap_grid
+      Topic: /move_base/global_costmap/costmap
       Unreliable: false
       Use Timestamp: false
-      Value: false
+      Value: true
     - Class: octomap_rviz_plugin/ColorOccupancyGrid
       Enabled: false
       Max. Height Display: 3.4028234663852886e+38
@@ -309,7 +311,7 @@ Visualization Manager:
       Decay Time: 0
       Depth Map Topic: /camera/depth_registered/image
       Depth Map Transport Hint: raw
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Min Color: 0; 0; 0
@@ -325,6 +327,52 @@ Visualization Manager:
       Topic Filter: true
       Use Fixed Frame: true
       Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 0
+      Enabled: false
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /rtabmap/mapPath
+      Unreliable: false
+      Value: false
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /move_base/DWAPlannerROS/global_plan
+      Unreliable: false
       Value: true
   Enabled: true
   Global Options:
@@ -349,36 +397,31 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz/Orbit
-      Distance: 5.617790222167969
+      Angle: -0.6199998259544373
+      Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Focal Point:
-        X: 1.5063560009002686
-        Y: 0.07346078753471375
-        Z: 0.07875720411539078
-      Focal Shape Fixed Size: true
-      Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.49979734420776367
+      Scale: 61.696189880371094
       Target Frame: base_link
-      Value: Orbit (rviz)
-      Yaw: 2.9781813621520996
+      Value: TopDownOrtho (rviz)
+      X: 0.2601134181022644
+      Y: -0.33327415585517883
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 824
+  Height: 1016
   Hide Left Dock: false
   Hide Right Dock: false
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a000002dcfc0200000007fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003e00000209000000ca00fffffffb0000000a0049006d006100670065010000024d000000cd0000001600fffffffb0000000a0049006d00610067006501000001fd0000011d0000000000000000000000010000010f000002dcfc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003e000002dc000000a600fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a0000004e200fffffffb0000000800540069006d0065010000000000000450000000000000000000000274000002dc00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000039cfc0200000007fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003e00000293000000ca00fffffffb0000000a0049006d00610067006501000002d7000001030000001600fffffffb0000000a0049006d00610067006501000001fd0000011d0000000000000000000000010000010f0000039cfc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003e0000039c000000a600fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a0000004e200fffffffb0000000800540069006d00650100000000000004500000000000000000000004b80000039c00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -387,6 +430,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1273
-  X: 647
+  Width: 1853
+  X: 67
   Y: 27
