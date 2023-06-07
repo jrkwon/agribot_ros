@@ -1,5 +1,6 @@
 <?xml version="1"?>
 <launch>
+  <arg name="navigation" default="true"/>
   <arg name="localization" default="false"/>
   <arg name="wait_for_transform" default="0.2"/>
   <arg name="map_id" default="" />  <!-- use location name -->
@@ -12,9 +13,17 @@
   <arg     if="$(arg localization)" name="args"  default=""/>
   <arg unless="$(arg localization)" name="args"  default="--delete_db_on_start"/>
 
+  <!-- all points below 20 cm are ground -->
+  <!-- all points above 20 cm and below 2 m are obstacles -->
+  <!-- Use simple passthrough to filter the ground instead of normals segmentation -->
+  <arg name="grid" default="
+    --Grid/MaxGroundHeight 0.2       
+    --Grid/MaxObstacleHeight 2       
+    --Grid/NormalsSegmentation false"/>
+
   <!-- group ns="rtabmap" -->
   <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
-      <arg name="args" value="$(arg args) --Optimizer/GravitySigma 0.3"/>
+      <arg name="args" value="$(arg args) $(arg grid) --Optimizer/GravitySigma 0.3"/>
       <arg name="rgb_topic" value="/camera/color/image_raw"/>
       <arg name="depth_topic" value="/camera/aligned_depth_to_color/image_raw"/>
       <arg name="camera_info_topic" value="/camera/color/camera_info"/>
@@ -25,9 +34,9 @@
 
       <arg name="frame_id" value="base_link"/>
       <!-- inputs -->
-      <!-- remap from="odom" to="/odom"/ -->
+      <remap from="odom" to="/odom"/>
       <!-- output -->
-      <!-- remap from="grid_map" to="/map"/ -->
+      <!--remap from="grid_map" to="/map"/-->
 
       <arg name="localization" value="$(arg localization)"/>
       <arg name="database_path" value="$(arg database_path)"/>
@@ -38,8 +47,7 @@
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_navigation)/rviz/rtabmap.rviz" />
   <!-- /group -->
 
-  <group if="$(arg localization)">
-    <!--- Run Move Base -->
+  <group if="$(arg navigation)">
     <remap from="map" to="/rtabmap/proj_map"/>
     <include file="$(find scout_navigation)/launch/include/move_base.launch" />
   </group>
