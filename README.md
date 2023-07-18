@@ -36,7 +36,7 @@
 
 * Clone the packages into your catkin workspace and compile
 
-    (the following instructions assume your catkin workspace is at: ~/catkin_ws/src)
+    (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
 
     ```
     $ cd ~/catkin_ws/src
@@ -61,9 +61,9 @@
 
 Launch ROS nodes
 
-* Start CAN bus
+* Start CAN bus. Assumption: You're at `~/catkin_ws`
     ```
-    $ ./start_can.sh
+    $ ./src/intagribot/start_can.sh
     ```
 * Start the base node for scout
 

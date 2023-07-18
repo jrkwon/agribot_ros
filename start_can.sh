@@ -1,0 +1,1 @@
+bash ./src/intagribot/scout_bringup/scripts/bringup_can2usb.bash
