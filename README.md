@@ -13,6 +13,39 @@
 * 5/14/2023: Fix wheel orientations.
 * 5/15/2023: Add a orchard world to test SLAM algorithms in simulation.
 
+## Installation
+* Install dependent libraries
+
+    ```
+    $ sudo apt install build-essential
+    $ sudo apt install libasio-dev
+    $ sudo apt install ros-melodic-teleop-twist-keyboard
+    $ sudo apt install ros-melodic-ros-control
+    $ sudo apt install ros-melodic-ros-controllers
+    $ sudo apt install ros-melodic-joint-state-publisher-gui 
+    $ sudo apt install ros-melodic-robot-state-publisher 
+    $ sudo apt install ros-melodic-roslint
+    $ sudo apt install ros-melodic-teleop-twist-joy
+    $ sudo apt install ros-melodic-move-base
+    $ sudo apt install ros-melodic-rqt 
+    $ sudo apt install ros-melodic-rqt-common-plugins
+    $ sudo apt install ros-melodic-rqt-robot-plugins 
+    $ sudo apt install ros-melodic-rqt-robot-steering
+    $ sudo apt install ros-melodic-dwa-local-planner
+    ```
+
+* Clone the packages into your catkin workspace and compile
+
+    (the following instructions assume your catkin workspace is at: ~/catkin_ws/src)
+
+    ```
+    $ cd ~/catkin_ws/src
+    $ git clone https://github.com/agilexrobotics/ugv_sdk.git  
+    $ git clone clone https://github.com/jrkwon/intagribot.git
+    $ cd ..
+    $ catkin_make
+    ```
+
 ## Packages
 
 * scout_base: robot node that communicates with the robot hardware
@@ -39,7 +72,7 @@ Launch ROS nodes
     ```
 
 ---
-**The original README**
+**The original README for future reference**
 
 # ROS Packages for Scout Mobile Robot
 
