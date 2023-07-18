@@ -45,6 +45,10 @@
     $ cd ..
     $ catkin_make
     ```
+* Don't forget do `source` before using it.
+    ```
+    $ source ./devel/setup.bash
+    ```
 
 ## Packages
 
@@ -61,7 +65,11 @@
 
 Launch ROS nodes
 
-* Start CAN bus. Assumption: You're at `~/catkin_ws`
+* IF: this is the first time to use this package, run this bash script to set up the CAN interface for your system.
+    ```
+    $ rosrun scout_bringup setup_can2usb.bash
+    ```
+* ELSE: Start CAN bus. Assumption: You're at `~/catkin_ws`
     ```
     $ ./src/intagribot/start_can.sh
     ```
