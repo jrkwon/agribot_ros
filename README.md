@@ -99,6 +99,8 @@ Launch ROS nodes
 
 ## Enable/Disable Sensors
 
+Before starting a launch file, you should set environment variables.
+
 * YDLidar Enable
     ```
     $ export SCOUT_YDLIDAR_ENABLED=1
