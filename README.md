@@ -32,6 +32,7 @@
     $ sudo apt install ros-melodic-rqt-robot-plugins 
     $ sudo apt install ros-melodic-rqt-robot-steering
     $ sudo apt install ros-melodic-dwa-local-planner
+    $ sudo apt install ros-melodic-lms1xx
     ```
 * Install ROS drivers for sensors
     (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
