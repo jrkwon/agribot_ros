@@ -1,6 +1,9 @@
 # rtabmap database
 *.db
 
+# For submodules
+**/build
+
 # ROS gitignore
 devel/
 logs/
