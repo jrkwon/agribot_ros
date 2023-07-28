@@ -97,6 +97,18 @@ Launch ROS nodes
     $ roslaunch scout_bringup start.launch 
     ```
 
+## Enable/Disable Sensors
+
+* YDLidar Enable
+    ```
+    $ export SCOUT_YDLIDAR_ENABLED=1
+    ```
+* YDLidar Disable
+    ```
+    $ export SCOUT_YDLIDAR_ENABLED=0
+    ```
+
+
 ---
 **The original README for future reference**
 

@@ -10,7 +10,7 @@
     <arg name="pub_tf" default="false" />  <!-- odom tf -->
     <!-- arg name="joy" default="false"/ -->
     <arg name="realsense_enabled" default="$(optenv SCOUT_REALSENSE_ENABLED 1)" />
-    <arg name="ydlidar_enabled" default="$(optenv SCOUT_YDLIDAR_ENABLED 1)" />
+    <arg name="ydlidar_enabled" default="$(optenv SCOUT_YDLIDAR_ENABLED 0)" />
 
     <include file="$(find scout_base)/launch/base.launch">
         <arg name="port_name" default="$(arg port_name)" />
