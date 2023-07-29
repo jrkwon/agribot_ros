@@ -34,6 +34,15 @@
     $ sudo apt install ros-melodic-dwa-local-planner
     $ sudo apt install ros-melodic-lms1xx
     $ sudo apt install ros-melodic-velodyne-description
+    $ sudo apt install ros-melodic-realsense2-camera
+    $ sudo apt install ros-melodic-robot-localization
+    $ sudo apt install ros-melodic-interactive-marker-twist-server
+    $ sudo apt install ros-melodic-twist-mux
+    $ sudo apt install ros-melodic-joy
+    $ sudo apt install ros-melodic-teleop-twist-joy
+    $ sudo apt install ros-melodic-pointcloud-to-laserscan
+    $ sudo apt install ros-melodic-imu-filter-madgwick
+
     ```
 * Install ROS drivers for sensors
     (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
