@@ -37,20 +37,21 @@
 * Install ROS drivers for sensors
     (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
     * YDLIDAR SDK `https://github.com/YDLIDAR/YDLidar-SDK`
-    ```
-    $ cd ~/catkin_ws/src
-    $ git clone https://github.com/YDLIDAR/YDLidar-SDK.git
-    $ cd YDLidar-SDK
-    $ mkdir build
-    $ cd build
-    $ cmake ..
-    $ make
-    $ sudo make install
-    ```
+        ```
+        $ cd ~/catkin_ws/src
+        $ git clone https://github.com/YDLIDAR/YDLidar-SDK.git
+        $ cd YDLidar-SDK
+        $ mkdir build
+        $ cd build
+        $ cmake ..
+        $ make
+        $ sudo make install
+        ```
     * YDLIDAR ROS Driver `https://github.com/YDLIDAR/ydlidar_ros_driver`
-    ```
-    $ git clone https://github.com/YDLIDAR/ydlidar_ros_driver.git 
-    ```
+        ```
+        $ cd ~/catkin_ws/src
+        $ git clone https://github.com/YDLIDAR/ydlidar_ros_driver.git 
+        ```
 
 
 * Clone the packages into your catkin workspace and compile
