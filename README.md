@@ -9,6 +9,8 @@
 ## History
 
 * This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
+* 7/28/2023: Add YDLIDAR
+* 7/28/2023: Add more ROS packages.
 * 5/14/2023: Reorganize the project to add sensors.
 * 5/14/2023: Fix wheel orientations.
 * 5/15/2023: Add a orchard world to test SLAM algorithms in simulation.
