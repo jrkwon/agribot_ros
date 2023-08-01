@@ -2,7 +2,8 @@
 
     <arg name = "model" default = "scout_v2"/>
 
-    <arg name="port_name" value="can0" />
+    <arg name="can" default="1" />
+    <arg name="port_name" value="can$(arg can)" />
     <arg name="simulated_robot" value="false" />
     <!-- arg name="model_xacro" default="$(find scout_description)/urdf/$(arg model).xacro" / -->
     <arg name="odom_topic_name" default="odom" />

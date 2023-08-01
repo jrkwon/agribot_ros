@@ -9,11 +9,12 @@
 ## History
 
 * This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
-* 7/28/2023: Add YDLIDAR
-* 7/28/2023: Add more ROS packages.
-* 5/14/2023: Reorganize the project to add sensors.
-* 5/14/2023: Fix wheel orientations.
-* 5/15/2023: Add a orchard world to test SLAM algorithms in simulation.
+* 08/01/2023: Add CAN port# option 
+* 07/28/2023: Add YDLIDAR
+* 07/28/2023: Add more ROS packages.
+* 05/14/2023: Reorganize the project to add sensors.
+* 05/14/2023: Fix wheel orientations.
+* 05/15/2023: Add a orchard world to test SLAM algorithms in simulation.
 
 ## Installation
 * Install dependent libraries
@@ -105,10 +106,10 @@ Launch ROS nodes
     ```
     $ ./src/intagribot/start_can.sh
     ```
-* Start the base node for scout
+* Start the base node for scout. The CAN port number can be identified. The example below is for CAN port 1.
 
     ```
-    $ roslaunch scout_bringup start.launch 
+    $ roslaunch scout_bringup start.launch can:=1
     ```
 
 ## Enable/Disable Sensors
