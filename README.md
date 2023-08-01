@@ -98,15 +98,16 @@
 
 Launch ROS nodes
 
+A CAN port number must be given. The following code uses CAN1 as an example. 
 * IF: this is the first time to use this package, run this bash script to set up the CAN interface for your system.
     ```
-    $ rosrun scout_bringup setup_can2usb.bash
+    $ rosrun scout_bringup setup_can2usb.bash 1
     ```
 * ELSE: Start CAN bus. Assumption: You're at `~/catkin_ws`
     ```
-    $ ./src/intagribot/start_can.sh
+    $ ./src/intagribot/start_can.sh 1
     ```
-* Start the base node for scout. The CAN port number can be identified. The example below is for CAN port 1.
+* Start the base node for scout. The CAN port number can be identified. 
 
     ```
     $ roslaunch scout_bringup start.launch can:=1
