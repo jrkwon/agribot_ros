@@ -28,11 +28,16 @@ int main(int argc, char **argv) {
   private_node.getParam("is_scout_omni",is_scout_omni);
   std::cout << "Working as scout omni: " << is_scout_omni << std::endl;
 
+  // get port_name
+  std::string port_name;
+  private_node.param<std::string>("port_name", port_name, std::string("can0"));
+  std::cout << "CAM port name: " << port_name << std::endl;
+
   // check protocol version
   ProtocolDetector detector;
   try
   {
-      detector.Connect("can0");
+      detector.Connect(port_name);
       auto proto = detector.DetectProtocolVersion(5);
       if(is_scout_mini && is_scout_omni)
       {
@@ -75,8 +80,8 @@ int main(int argc, char **argv) {
   ScoutROSMessenger messenger(robot.get(),&node,is_scout_omni);
 
   // fetch parameters before connecting to rt
-  std::string port_name;
-  private_node.param<std::string>("port_name", port_name, std::string("can0"));
+  //std::string port_name;
+  //private_node.param<std::string>("port_name", port_name, std::string("can0"));
   private_node.param<std::string>("odom_frame", messenger.odom_frame_,
                                   std::string("odom"));
   private_node.param<std::string>("base_frame", messenger.base_frame_,
