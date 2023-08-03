@@ -143,10 +143,10 @@ The Enable Button (RB) must be held to control directions. When this button is r
 $ roslaunch scout_control teleop.launch
 ```
 
+---
+---
+# The original README for future reference
 
----
----
-**The original README for future reference**
 
 # ROS Packages for Scout Mobile Robot
 
