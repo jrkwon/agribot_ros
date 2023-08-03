@@ -130,7 +130,7 @@ Before starting a launch file, you should set environment variables.
 ## Test with Keyboard
 
 ```
-$ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+$ rosrun teleop_twist_keyboard teleop_twist_keyboard.py _repeat_rate:=50.0
 ```
 
 ## Test with Joystick
