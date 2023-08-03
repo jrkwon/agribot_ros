@@ -127,6 +127,23 @@ Before starting a launch file, you should set environment variables.
     ```
 
 
+## Test with Keyboard
+
+```
+$ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
+
+## Test with Joystick
+
+Make sure the mode switch is “X.” In XInput mode, the gamepad uses standard Windows XInput gamepad drivers. “D,” DirectInput is an older input standard for games on the Windows operating system.
+
+The Enable Button (RB) must be held to control directions. When this button is released, the robot stops.
+
+```
+$ roslaunch scout_control teleop.launch
+```
+
+
 ---
 **The original README for future reference**
 
