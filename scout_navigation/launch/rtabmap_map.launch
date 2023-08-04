@@ -1,17 +1,12 @@
 <?xml version="1"?>
 <launch>
-  <arg name="navigation" default="true"/>
-  <arg name="localization" default="false"/>
+  <arg name="camera_model" default="d435i"/> 
+  <arg name="database_path" default="$(find scout_navigation)/maps/rtabmap_$(arg camera_model)_$(arg map_id).db"/>
+  <arg name="publish_tf_map"          default="true"/>
   <arg name="wait_for_transform" default="0.2"/>
   <arg name="map_id" default="" />  <!-- use location name -->
 
-  <arg name="camera_model" default="d435i"/> 
-  <arg name="database_path" default="$(find scout_navigation)/maps/rtabmap_$(arg camera_model)_$(arg map_id).db"/>
-  
-  <arg name="publish_tf_map"          default="true"/>
-  
-  <arg     if="$(arg localization)" name="args"  default=""/>
-  <arg unless="$(arg localization)" name="args"  default="--delete_db_on_start"/>
+  <arg name="args"  default="--delete_db_on_start"/>
 
   <!-- all points below 20 cm are ground -->
   <!-- all points above 20 cm and below 2 m are obstacles -->
@@ -38,7 +33,7 @@
       <!-- output -->
       <!--remap from="grid_map" to="/map"/-->
 
-      <arg name="localization" value="$(arg localization)"/>
+      <arg name="localization" value="false"/>
       <arg name="database_path" value="$(arg database_path)"/>
 
       <arg name="rtabmapviz" value="true"/>
@@ -47,8 +42,4 @@
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_navigation)/rviz/rtabmap.rviz" />
   <!-- /group -->
 
-  <group if="$(arg navigation)">
-    <remap from="map" to="/rtabmap/proj_map"/>
-    <include file="$(find scout_navigation)/launch/include/move_base.launch" />
-  </group>
 </launch>

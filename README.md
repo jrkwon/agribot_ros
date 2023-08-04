@@ -143,6 +143,30 @@ The Enable Button (RB) must be held to control directions. When this button is r
 $ roslaunch scout_control teleop.launch
 ```
 
+## SLAM Test
+
+### RTABMap
+
+RTABMap Test with RealSense D435i
+Mapping.
+
+#### Map Buidling
+The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
+In the example below, `wonkwang` is used for a map id.
+```
+$ roslaunch scout_navigation rtabmap_map.launch map_id:=wonkwang
+```
+
+#### Localization (Autonomous Navigation)
+The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
+In the example below, `wonkwang` is used for a map id. This means that the robot will use the map, `wonkwang`, that has been built in the previous step, to navigate the environment.
+
+```
+$ roslaunch scout_navigation rtabmap_localization.launch map_id:=wonkwang
+```
+
+Use Rviz to set a goal position and orientation.
+
 ---
 ---
 # The original README for future reference
