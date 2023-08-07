@@ -9,6 +9,8 @@
 ## History
 
 * This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
+
+* 08/07/2023: Change the code block to make easier to copy and paste.
 * 08/01/2023: Add CAN port# option 
 * 07/28/2023: Add YDLIDAR
 * 07/28/2023: Add more ROS packages.
@@ -19,51 +21,51 @@
 ## Installation
 * Install dependent libraries
 
-    ```
-    $ sudo apt install build-essential
-    $ sudo apt install libasio-dev
-    $ sudo apt install ros-melodic-teleop-twist-keyboard
-    $ sudo apt install ros-melodic-ros-control
-    $ sudo apt install ros-melodic-ros-controllers
-    $ sudo apt install ros-melodic-joint-state-publisher-gui 
-    $ sudo apt install ros-melodic-robot-state-publisher 
-    $ sudo apt install ros-melodic-roslint
-    $ sudo apt install ros-melodic-teleop-twist-joy
-    $ sudo apt install ros-melodic-move-base
-    $ sudo apt install ros-melodic-rqt 
-    $ sudo apt install ros-melodic-rqt-common-plugins
-    $ sudo apt install ros-melodic-rqt-robot-plugins 
-    $ sudo apt install ros-melodic-rqt-robot-steering
-    $ sudo apt install ros-melodic-dwa-local-planner
-    $ sudo apt install ros-melodic-lms1xx
-    $ sudo apt install ros-melodic-velodyne-description
-    $ sudo apt install ros-melodic-realsense2-camera
-    $ sudo apt install ros-melodic-robot-localization
-    $ sudo apt install ros-melodic-interactive-marker-twist-server
-    $ sudo apt install ros-melodic-twist-mux
-    $ sudo apt install ros-melodic-joy
-    $ sudo apt install ros-melodic-teleop-twist-joy
-    $ sudo apt install ros-melodic-pointcloud-to-laserscan
-    $ sudo apt install ros-melodic-imu-filter-madgwick
+    ```bash
+    sudo apt install build-essential
+    sudo apt install libasio-dev
+    sudo apt install ros-melodic-teleop-twist-keyboard
+    sudo apt install ros-melodic-ros-control
+    sudo apt install ros-melodic-ros-controllers
+    sudo apt install ros-melodic-joint-state-publisher-gui 
+    sudo apt install ros-melodic-robot-state-publisher 
+    sudo apt install ros-melodic-roslint
+    sudo apt install ros-melodic-teleop-twist-joy
+    sudo apt install ros-melodic-move-base
+    sudo apt install ros-melodic-rqt 
+    sudo apt install ros-melodic-rqt-common-plugins
+    sudo apt install ros-melodic-rqt-robot-plugins 
+    sudo apt install ros-melodic-rqt-robot-steering
+    sudo apt install ros-melodic-dwa-local-planner
+    sudo apt install ros-melodic-lms1xx
+    sudo apt install ros-melodic-velodyne-description
+    sudo apt install ros-melodic-realsense2-camera
+    sudo apt install ros-melodic-robot-localization
+    sudo apt install ros-melodic-interactive-marker-twist-server
+    sudo apt install ros-melodic-twist-mux
+    sudo apt install ros-melodic-joy
+    sudo apt install ros-melodic-teleop-twist-joy
+    sudo apt install ros-melodic-pointcloud-to-laserscan
+    sudo apt install ros-melodic-imu-filter-madgwick
 
     ```
 * Install ROS drivers for sensors
     (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
     * YDLIDAR SDK `https://github.com/YDLIDAR/YDLidar-SDK`
-        ```
-        $ cd ~/catkin_ws/src
-        $ git clone https://github.com/YDLIDAR/YDLidar-SDK.git
-        $ cd YDLidar-SDK
-        $ mkdir build
-        $ cd build
-        $ cmake ..
-        $ make
-        $ sudo make install
+        ```bash
+        cd ~/catkin_ws/src
+        git clone https://github.com/YDLIDAR/YDLidar-SDK.git
+        cd YDLidar-SDK
+        mkdir build
+        cd build
+        cmake ..
+        make
+        sudo make install
         ```
     * YDLIDAR ROS Driver `https://github.com/YDLIDAR/ydlidar_ros_driver`
-        ```
-        $ cd ~/catkin_ws/src
-        $ git clone https://github.com/YDLIDAR/ydlidar_ros_driver.git 
+        ```bash
+        cd ~/catkin_ws/src
+        git clone https://github.com/YDLIDAR/ydlidar_ros_driver.git 
         ```
 
 
@@ -71,16 +73,16 @@
 
     (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
 
-    ```
-    $ cd ~/catkin_ws/src
-    $ git clone https://github.com/agilexrobotics/ugv_sdk.git  
-    $ git clone clone https://github.com/jrkwon/intagribot.git
-    $ cd ..
-    $ catkin_make
+    ```bash
+    cd ~/catkin_ws/src
+    git clone https://github.com/agilexrobotics/ugv_sdk.git  
+    git clone clone https://github.com/jrkwon/intagribot.git
+    cd ..
+    catkin_make
     ```
 * Don't forget do `source` before using it.
-    ```
-    $ source ./devel/setup.bash
+    ```bash
+    source ./devel/setup.bash
     ```
 
 ## Packages
@@ -100,37 +102,53 @@ Launch ROS nodes
 
 A CAN port number must be given. The following code uses CAN1 as an example. 
 * IF: this is the first time to use this package, run this bash script to set up the CAN interface for your system.
-    ```
-    $ rosrun scout_bringup setup_can2usb.bash 1
+    ```bash
+    rosrun scout_bringup setup_can2usb.bash 1
     ```
 * ELSE: Start CAN bus. Assumption: You're at `~/catkin_ws`
-    ```
-    $ ./src/intagribot/start_can.sh 1
+    ```bash
+    ./src/intagribot/start_can.sh 1
     ```
 * Start the base node for scout. The CAN port number can be identified. 
 
-    ```
-    $ roslaunch scout_bringup start.launch can:=1
+    ```bash
+    roslaunch scout_bringup start.launch can:=1
     ```
 
+## Using Sensors
+
+### YDLidar
+
+YDLidar ROS driver expects the serial port name as `/dev/ydliar`. Here is how to change a default linux serial port name and keep it.
+
+https://github.com/YDLIDAR/YDLidar-SDK/blob/master/doc/howto/how_to_create_a_udev_rules.md
+
 ## Enable/Disable Sensors
+
+### Through an environment varialbe
 
 Before starting a launch file, you should set environment variables.
 
 * YDLidar Enable
-    ```
-    $ export SCOUT_YDLIDAR_ENABLED=1
+    ```bash
+    export SCOUT_YDLIDAR_ENABLED=1
     ```
 * YDLidar Disable
+    ```bash
+    export SCOUT_YDLIDAR_ENABLED=0
     ```
-    $ export SCOUT_YDLIDAR_ENABLED=0
-    ```
+### Through command line params in `start.launch`
 
+- Start the robot with YDLidar enabled.
+
+    ```bash 
+    roslaunch scout_bringup start.launch can:=1 ydliar_enabled:=true
+    ``` 
 
 ## Test with Keyboard
 
-```
-$ rosrun teleop_twist_keyboard teleop_twist_keyboard.py _repeat_rate:=50.0
+```bash
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py _repeat_rate:=50.0
 ```
 
 ## Test with Joystick
@@ -153,16 +171,16 @@ Mapping.
 #### Map Buidling
 The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
 In the example below, `wonkwang` is used for a map id.
-```
-$ roslaunch scout_navigation rtabmap_map.launch map_id:=wonkwang
+```bash
+roslaunch scout_navigation rtabmap_map.launch map_id:=wonkwang
 ```
 
 #### Localization (Autonomous Navigation)
 The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
 In the example below, `wonkwang` is used for a map id. This means that the robot will use the map, `wonkwang`, that has been built in the previous step, to navigate the environment.
 
-```
-$ roslaunch scout_navigation rtabmap_localization.launch map_id:=wonkwang
+```bash
+roslaunch scout_navigation rtabmap_localization.launch map_id:=wonkwang
 ```
 
 Use Rviz to set a goal position and orientation.
