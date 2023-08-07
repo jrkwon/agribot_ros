@@ -139,7 +139,7 @@ Before starting a launch file, you should set environment variables.
     ```
 ### Through command line params in `start.launch`
 
-- Start the robot with YDLidar enabled.
+- Start the robot with YDLidar enabled. (default: false)
 
     ```bash 
     roslaunch scout_bringup start.launch can:=1 ydliar_enabled:=true
@@ -157,8 +157,8 @@ Make sure the mode switch is “X.” In XInput mode, the gamepad uses standard 
 
 The Enable Button (RB) must be held to control directions. When this button is released, the robot stops.
 
-```
-$ roslaunch scout_control teleop.launch
+```bash
+roslaunch scout_control teleop.launch
 ```
 
 ## SLAM Test
