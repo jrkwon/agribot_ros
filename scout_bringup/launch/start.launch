@@ -4,6 +4,7 @@
 
     <arg name="can" default="1" />
     <arg name="port_name" value="can$(arg can)" />
+    <arg name="base_enabled" default="true" />
     <arg name="simulated_robot" value="false" />
     <!-- arg name="model_xacro" default="$(find scout_description)/urdf/$(arg model).xacro" / -->
     <arg name="odom_topic_name" default="odom" />
@@ -13,12 +14,14 @@
     <arg name="realsense_enabled" default="$(optenv SCOUT_REALSENSE_ENABLED 1)" />
     <arg name="ydlidar_enabled" default="$(optenv SCOUT_YDLIDAR_ENABLED 0)" />
 
-    <include file="$(find scout_base)/launch/base.launch">
-        <arg name="port_name" default="$(arg port_name)" />
-        <arg name="simulated_robot" default="$(arg simulated_robot)" />
-        <arg name="odom_topic_name" default="$(arg odom_topic_name)" />
-	    <arg name="pub_tf" default="$(arg pub_tf)"/>
-    </include>
+    <group if="$(arg base_enabled)">
+        <include file="$(find scout_base)/launch/base.launch">
+            <arg name="port_name" default="$(arg port_name)" />
+            <arg name="simulated_robot" default="$(arg simulated_robot)" />
+            <arg name="odom_topic_name" default="$(arg odom_topic_name)" />
+            <arg name="pub_tf" default="$(arg pub_tf)"/>
+        </include>
+    </group>
 
     <group if="$(arg realsense_enabled)">
         <include file="$(find scout_bringup)/launch/include/realsense.launch">
