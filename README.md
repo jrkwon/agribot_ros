@@ -157,6 +157,11 @@ Make sure the mode switch is “X.” In XInput mode, the gamepad uses standard 
 
 The Enable Button (RB) must be held to control directions. When this button is released, the robot stops.
 
+![joystick-front](images/logitech-joy-front.png) 
+
+![joystick-front](images/logitech-joy-top.png)
+
+
 ```bash
 roslaunch scout_control teleop.launch
 ```
