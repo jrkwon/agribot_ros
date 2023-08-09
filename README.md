@@ -10,10 +10,11 @@
 
 This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
 
-* 08/09/2023: Add a joystick option. The default XBox.
+* 08/09/2023: Add `xavier` param for `start.launch`. The default is `xavier` where the default FPS of Realsense camera is 15.
+* 08/09/2023: Add a joystick option. The default `XBox`.
 * 08/07/2023: Change the code block to make easier to copy and paste.
-* 08/01/2023: Add CAN port# option 
-* 07/28/2023: Add YDLIDAR
+* 08/01/2023: Add `CAN port#` option 
+* 07/28/2023: Add `YDLIDAR`
 * 07/28/2023: Add more ROS packages.
 * 05/14/2023: Reorganize the project to add sensors.
 * 05/14/2023: Fix wheel orientations.
@@ -117,6 +118,18 @@ A CAN port number must be given. The following code uses CAN1 as an example.
     ```
 
 ## Using Sensors
+
+### Realsense Camera
+
+The default computing platform is set as `xavier`. If you're using a computer that is not `xavier`, set this param `false` when `start.launch` is used.
+The frames per second are set `15` for `xavier`
+ 
+#### For Jetson Xavier
+
+The following combination of the versions has been verified for the proper operations.
+- Camera firmware : `5.13.0.50`
+- Realsense SDK version (librealsense2) : `2.50.0`
+- Real sense ROS Wrapper : `2.3.2`
 
 ### YDLidar
 

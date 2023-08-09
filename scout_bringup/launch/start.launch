@@ -6,6 +6,8 @@
     <arg name="agilex_joystick" default="false" />
     <arg name="port_name" value="can$(arg can)" />
     <arg name="base_enabled" default="true" />
+    <arg name="xavier" default="true" />
+
     <arg name="simulated_robot" value="false" />
     <!-- arg name="model_xacro" default="$(find scout_description)/urdf/$(arg model).xacro" / -->
     <arg name="odom_topic_name" default="odom" />
@@ -28,6 +30,12 @@
     <group if="$(arg realsense_enabled)">
         <include file="$(find scout_bringup)/launch/include/realsense.launch">
             <arg name="camera" value="camera" />
+            <group if="$(arg xavier)">  <!-- set fps 15 -->
+                <arg name="fisheye_fps" value="15"/>
+                <arg name="depth_fps"   value="15"/>
+                <arg name="infra_fps"   value="15"/>
+                <arg name="color_fps"   value="15"/>
+            </group>
         </include>
     </group>
 
