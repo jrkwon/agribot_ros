@@ -8,7 +8,7 @@
 
 ## History
 
-* This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
+This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
 
 * 08/07/2023: Change the code block to make easier to copy and paste.
 * 08/01/2023: Add CAN port# option 
