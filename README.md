@@ -158,7 +158,8 @@ Make sure the mode switch is “X.” In XInput mode, the gamepad uses standard 
 The Enable Button (LB) must be held to control directions. When this button is released, the robot stops.
 
 ```
-Teleop configuration for Logitech F710 Gamepad using the x-pad configuration.
+Teleop configuration for Logitech F710 Gamepad 
+using the x-pad configuration.
 
 - Left thumb-stick up/down for velocity, left/right for twist
 - LB for enable
