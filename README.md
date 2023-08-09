@@ -155,12 +155,34 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py _repeat_rate:=50.0
 
 Make sure the mode switch is “X.” In XInput mode, the gamepad uses standard Windows XInput gamepad drivers. “D,” DirectInput is an older input standard for games on the Windows operating system.
 
-The Enable Button (RB) must be held to control directions. When this button is released, the robot stops.
+The Enable Button (LB) must be held to control directions. When this button is released, the robot stops.
 
-![joystick-front](images/logitech-joy-front.png) 
+```
+Teleop configuration for Logitech F710 Gamepad using the x-pad configuration.
 
-![joystick-front](images/logitech-joy-top.png)
+- Left thumb-stick up/down for velocity, left/right for twist
+- LB for enable
 
+        (LB)                                 (RB)
+        (LT)                                 (RT)
+      _=====_            D(  .)X            _=====_
+     / _____ \                             / _____ \
+   +.-'_____'-.---------------------------.-'_____'-.+
+  /   |     |  '.                       .'  |      |   \
+ / ___| /|\ |___ \ (back)(Lgtc)(strt)  / ___| (Y)  |___ \
+/ |      |      | ;  __           __  ; |              | |
+| | <---   ---> | | (__) .       (__) | | (X)       (B)| |
+| |___   |   ___| ; MODE         VIBE ; |___       ____| /
+|\    | \|/ |    /  _     ___      _   \    | (A) |    /|
+| \   |_____|  .','" "', |___|  ,'" "', '.  |_____|  .' |
+|  '-.______.-' /       \ANALOG/       \  '-._____.-'   |
+|               |  LJ   |------|   RJ  |                |
+|              /\       /      \       /\               |
+|             /  '.___.'        '.___.'  \              |
+|            /                            \             |
+ \          /                              \           /
+  \________/                                \_________/
+```
 
 ```bash
 roslaunch scout_control teleop.launch
