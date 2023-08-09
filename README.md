@@ -109,7 +109,7 @@ A CAN port number must be given. The following code uses CAN1 as an example.
     ```bash
     ./src/intagribot/start_can.sh 1
     ```
-* Start the base node for scout. The CAN port number can be identified. 
+* Start the base node for scout. The CAN port number can be identified. The default joystick type is XBox. If you want to use the AgileX joystick, you should set `agilex_joystick` be true. 
 
     ```bash
     roslaunch scout_bringup start.launch can:=1

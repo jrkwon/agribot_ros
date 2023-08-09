@@ -3,6 +3,7 @@
     <arg name = "model" default = "scout_v2"/>
 
     <arg name="can" default="1" />
+    <arg name="agilex_joystick" default="false" />
     <arg name="port_name" value="can$(arg can)" />
     <arg name="base_enabled" default="true" />
     <arg name="simulated_robot" value="false" />
@@ -17,6 +18,7 @@
     <group if="$(arg base_enabled)">
         <include file="$(find scout_base)/launch/base.launch">
             <arg name="port_name" default="$(arg port_name)" />
+            <arg name="agilex_joystick" default="$(arg agilex_joystick)" />
             <arg name="simulated_robot" default="$(arg simulated_robot)" />
             <arg name="odom_topic_name" default="$(arg odom_topic_name)" />
             <arg name="pub_tf" default="$(arg pub_tf)"/>

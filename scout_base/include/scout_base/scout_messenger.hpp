@@ -27,7 +27,8 @@ class ScoutROSMessenger
 {
 public:
     explicit ScoutROSMessenger(ros::NodeHandle *nh);
-    ScoutROSMessenger(ScoutRobot *scout, ros::NodeHandle *nh, bool is_scout_omni);
+    ScoutROSMessenger(ScoutRobot *scout, ros::NodeHandle *nh, 
+                        bool is_scout_omni, bool agilex_joystick);
 
     std::string odom_frame_;
     std::string base_frame_;
@@ -35,6 +36,7 @@ public:
     bool pub_tf;
     bool is_scout_omni;
     bool simulated_robot_ = false;
+    bool agilex_joystick_ = false;
     int sim_control_rate_ = 50;
 
     void SetupSubscription();

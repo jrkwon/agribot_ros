@@ -21,6 +21,8 @@ int main(int argc, char **argv) {
   // check wether controlling scout mini
   bool is_scout_mini = false;
   static bool is_scout_omni = false;
+  bool agilex_joystick = false;
+
   //private_node.param<bool>("is_scout_mini", is_scout_mini, false);
   private_node.getParam("is_scout_mini",is_scout_mini);
   std::cout << "Working as scout mini: " << is_scout_mini << std::endl;
@@ -32,6 +34,9 @@ int main(int argc, char **argv) {
   std::string port_name;
   private_node.param<std::string>("port_name", port_name, std::string("can0"));
   std::cout << "CAM port name: " << port_name << std::endl;
+  // get joystick type
+  private_node.getParam("agilex_joystick", agilex_joystick);
+  std::cout << "Joystick type: " << (agilex_joystick ? "AgileX" : "XBOX/PS") << std::endl;
 
   // check protocol version
   ProtocolDetector detector;
@@ -77,7 +82,7 @@ int main(int argc, char **argv) {
       ROS_ERROR("please bringup up can or make sure can port exist");
       ros::shutdown();
   }
-  ScoutROSMessenger messenger(robot.get(),&node,is_scout_omni);
+  ScoutROSMessenger messenger(robot.get(), &node, is_scout_omni, agilex_joystick);
 
   // fetch parameters before connecting to rt
   //std::string port_name;

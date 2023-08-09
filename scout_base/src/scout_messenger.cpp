@@ -20,8 +20,9 @@ namespace westonrobot
   ScoutROSMessenger::ScoutROSMessenger(ros::NodeHandle *nh)
       : scout_(nullptr), nh_(nh) {}
 
-  ScoutROSMessenger::ScoutROSMessenger(ScoutRobot *scout, ros::NodeHandle *nh, bool is_scout_omni)
-      : scout_(scout), nh_(nh) ,is_scout_omni(is_scout_omni){}
+  ScoutROSMessenger::ScoutROSMessenger(ScoutRobot *scout, ros::NodeHandle *nh, \
+                                        bool is_scout_omni, bool agilex_joystick)
+      : scout_(scout), nh_(nh) , is_scout_omni(is_scout_omni), agilex_joystick_(agilex_joystick) {}
 
   void ScoutROSMessenger::SetupSubscription()
   {
@@ -30,9 +31,17 @@ namespace westonrobot
     status_publisher_ = nh_->advertise<scout_msgs::ScoutStatus>("/scout_status", 10);
     BMS_status_publisher_ = nh_->advertise<scout_msgs::ScoutBmsStatus>("/BMS_status", 10);
 
-    // cmd subscriber
-    motion_cmd_subscriber_ = nh_->subscribe<geometry_msgs::Twist>(
-        "/cmd_vel", 5, &ScoutROSMessenger::TwistCmdCallback, this);
+    if (agilex_joystick_)
+    {
+      // cmd subscriber for AgileX joystick
+      motion_cmd_subscriber_ = nh_->subscribe<geometry_msgs::Twist>(
+          "/cmd_vel", 5, &ScoutROSMessenger::TwistCmdCallback, this);
+    }
+    else {
+      // cmd subscriber for XBOX or PS Joystick
+      motion_cmd_subscriber_ = nh_->subscribe<geometry_msgs::Twist>(
+          "/joy_teleop/cmd_vel", 5, &ScoutROSMessenger::TwistCmdCallback, this);
+    }
     light_cmd_subscriber_ = nh_->subscribe<scout_msgs::ScoutLightCmd>(
         "/scout_light_control", 5, &ScoutROSMessenger::LightCmdCallback, this);
   }
