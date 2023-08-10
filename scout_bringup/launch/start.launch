@@ -2,11 +2,11 @@
 
     <arg name = "model" default = "scout_v2"/>
 
-    <arg name="can" default="1" />
-    <arg name="agilex_joystick" default="false" />
+    <arg name="can" default="1" doc="CAN port #: 0, 1, 2, ..."/>
+    <arg name="agilex_joystick" default="false" doc="true if USB joystick" />
     <arg name="port_name" value="can$(arg can)" />
     <arg name="base_enabled" default="true" />
-    <arg name="xavier" default="true" />
+    <arg name="xavier" default="true" doc="true if xavier is used" />
 
     <arg name="simulated_robot" value="false" />
     <!-- arg name="model_xacro" default="$(find scout_description)/urdf/$(arg model).xacro" / -->
