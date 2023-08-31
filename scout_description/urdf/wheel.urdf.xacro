@@ -2,7 +2,7 @@
 <!--
 Software License Agreement (BSD)
 
-\file      scout_wheel.xacro (adapted from wheel.urdf.xacro in husky_description)
+\file      scout_wheel.xacro (adapted from wheel.urdf.xacro in scout_description)
 \authors   Paul Bovbel <pbovbel@clearpathrobotics.com>
            Ruixiang Du <ruixiang.du@westonrobot.com>
 \copyright Copyright (c) 2015, Clearpath Robotics, Inc., All rights reserved.
