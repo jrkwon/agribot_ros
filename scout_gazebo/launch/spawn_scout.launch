@@ -25,7 +25,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 -->
 <launch>
 
-  <arg name="multimaster" default="false"/>
+  <!-- arg name="multimaster" default="false"/ -->
 
   <arg name="robot_namespace" default="/"/>
 
@@ -41,7 +41,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
   <group ns="$(arg robot_namespace)">
 
-    <group if="$(arg multimaster)">
+    <!-- group if="$(arg multimaster)">
       <include file="$(find scout_description)/launch/description.launch" >
         <arg name="robot_namespace" value="$(arg robot_namespace)"/>
       </include>
@@ -49,22 +49,22 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
       <include file="$(find multimaster_launch)/launch/multimaster_gazebo_robot.launch">
         <arg name="gazebo_interface" value="$(find scout_control)/config/gazebo_interface.yaml" />
         <arg name="robot_namespace" value="$(arg robot_namespace)"/>
-      </include>
+      </include -->
 
       <!-- For multimaster bringup, need to load the controller config -->
-      <rosparam command="load" file="$(find scout_control)/config/control.yaml" />
-    </group>
+      <!-- rosparam command="load" file="$(find scout_control)/config/control.yaml" />
+    </group -->
 
     <!-- For single master bringup, run robot control on the gazebo master -->
     <!-- Note that scout_description/description.launch is already included in scout_control/control.launch. -->
-    <group unless="$(arg multimaster)">
+    <!-- group unless="$(arg multimaster)" -->
       <include file="$(find scout_control)/launch/control.launch">
-        <arg name="multimaster" value="$(arg multimaster)"/>
+        <!-- arg name="multimaster" value="$(arg multimaster)"/ -->
       </include>
-      <include file="$(find scout_control)/launch/teleop.launch">
+      <include file="$(find scout_control)/launch/teleop_joystick.launch">
         <arg name="joystick" value="$(arg joystick)" />
       </include>
-    </group>
+    <!-- /group -->
 
     <!-- Additional nodes for specific accessories -->
     <group if="$(arg realsense_enabled)">

@@ -227,6 +227,24 @@ roslaunch scout_navigation rtabmap_localization.launch map_id:=wonkwang
 
 Use Rviz to set a goal position and orientation.
 
+## SLAM Test inside Gazebo
+
+### ACML
+
+```bash
+roslaunch scout_gazebo scout_playpen.launch
+```
+
+Open another terminal.
+```bash
+roslaunch husky_navigation map_based_navigation.launch
+```
+
+- Turn on `Navigation` in the Rviz.
+- You will see a map (playpen).
+- Set a goal with the `2D Nav Gaol` button.
+
+
 ---
 ---
 # The original README for future reference
