@@ -42,6 +42,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     sudo apt install ros-melodic-lms1xx
     sudo apt install ros-melodic-velodyne-description
     sudo apt install ros-melodic-realsense2-camera
+    sudo apt install ros-melodic-realsense2-description
     sudo apt install ros-melodic-robot-localization
     sudo apt install ros-melodic-interactive-marker-twist-server
     sudo apt install ros-melodic-twist-mux
@@ -49,6 +50,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     sudo apt install ros-melodic-teleop-twist-joy
     sudo apt install ros-melodic-pointcloud-to-laserscan
     sudo apt install ros-melodic-imu-filter-madgwick
+    sudo apt install ros-melodic-rviz-imu-plugin
 
     ```
 * Install ROS drivers for sensors
