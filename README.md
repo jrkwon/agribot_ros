@@ -78,7 +78,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     ```bash
     cd ~/catkin_ws/src
     git clone https://github.com/agilexrobotics/ugv_sdk.git  
-    git clone clone https://github.com/jrkwon/intagribot.git
+    git clone https://github.com/jrkwon/intagribot.git
     cd ..
     catkin_make
     ```
