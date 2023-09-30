@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="joy_dev" default="$(optenv HUSKY_JOY_DEVICE /dev/input/js0)" />
+  <arg name="joy_dev" default="$(optenv SCOUT_JOY_DEVICE /dev/input/js0)" />
   <arg name="joystick" default="true" />
 
   <group ns="joy_teleop">
 
-    <group unless="$(optenv HUSKY_LOGITECH 1)" >
-      <rosparam command="load" file="$(find husky_control)/config/teleop_ps4.yaml" />
+    <group unless="$(optenv SCOUT_LOGITECH 1)" >
+      <rosparam command="load" file="$(find scout_control)/config/teleop_ps4.yaml" />
     </group>
 
-    <group if="$(optenv HUSKY_LOGITECH 1)" >
-      <rosparam command="load" file="$(find husky_control)/config/teleop_logitech.yaml" />
+    <group if="$(optenv SCOUT_LOGITECH 1)" >
+      <rosparam command="load" file="$(find scout_control)/config/teleop_logitech.yaml" />
       <param name="joy_node/dev" value="$(arg joy_dev)" />
     </group>
 
