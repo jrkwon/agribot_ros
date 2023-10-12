@@ -27,16 +27,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find scout_description)/urdf/accessories/ydlidar_g4.urdf.xacro" />
+  <xacro:include filename="$(find scout_description)/urdf/accessories/ydlidar.urdf.xacro" />
 
-  <xacro:macro name="ydlidar_g4_mount" params="prefix">
+  <xacro:macro name="ydlidar_mount" params="prefix">
 
     <link name="${prefix}_laser_mount">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 ${-M_PI/2}" />
         <geometry>
           <!-- Origin of this mesh is the base of the bracket. -->
-          <mesh filename="package://scout_description/meshes/accessories/ydlidar_g4_mount.dae" />
+          <mesh filename="package://scout_description/meshes/accessories/ydlidar_mount.dae" />
         </geometry>
       </visual>
       <collision>

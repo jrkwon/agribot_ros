@@ -26,7 +26,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="ydlidar_g4" params="frame:=laser topic:=scan sample_size:=720 update_rate:=50
+  <xacro:macro name="ydlidar" params="frame:=laser topic:=scan sample_size:=720 update_rate:=50
                min_angle:=-2.35619 max_angle:=2.35619 min_range:=0.1 max_range:=30.0 robot_namespace:=/" >
     <link name="${frame}">
       <inertial>
@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://scout_description/meshes/accessories/ydlidar_g4.dae" />
+            filename="package://scout_description/meshes/accessories/ydlidar.dae" />
         </geometry>
         <material
           name="">
@@ -63,7 +63,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://scout_description/meshes/accessories/ydlidar_g4.dae" />
+            filename="package://scout_description/meshes/accessories/ydlidar.dae" />
         </geometry>
       </collision>
     </link>
