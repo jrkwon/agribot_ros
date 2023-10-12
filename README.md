@@ -10,6 +10,7 @@
 
 This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
 
+* 10/12/2023: Add simulated `YDLIDAR` for `Gazebo`.
 * 08/09/2023: Add `xavier` param for `start.launch`. The default is `xavier` where the default FPS of Realsense camera is 15.
 * 08/09/2023: Add a joystick option. The default `XBox`.
 * 08/07/2023: Change the code block to make easier to copy and paste.
