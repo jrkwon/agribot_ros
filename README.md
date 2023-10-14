@@ -25,33 +25,35 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
 * Install dependent libraries
 
     ```bash
-    sudo apt install build-essential
-    sudo apt install libasio-dev
-    sudo apt install ros-melodic-teleop-twist-keyboard
-    sudo apt install ros-melodic-ros-control
-    sudo apt install ros-melodic-ros-controllers
-    sudo apt install ros-melodic-joint-state-publisher-gui 
-    sudo apt install ros-melodic-robot-state-publisher 
-    sudo apt install ros-melodic-roslint
-    sudo apt install ros-melodic-teleop-twist-joy
-    sudo apt install ros-melodic-move-base
-    sudo apt install ros-melodic-rqt 
-    sudo apt install ros-melodic-rqt-common-plugins
-    sudo apt install ros-melodic-rqt-robot-plugins 
-    sudo apt install ros-melodic-rqt-robot-steering
-    sudo apt install ros-melodic-dwa-local-planner
-    sudo apt install ros-melodic-lms1xx
-    sudo apt install ros-melodic-velodyne-description
-    sudo apt install ros-melodic-realsense2-camera
-    sudo apt install ros-melodic-realsense2-description
-    sudo apt install ros-melodic-robot-localization
-    sudo apt install ros-melodic-interactive-marker-twist-server
-    sudo apt install ros-melodic-twist-mux
-    sudo apt install ros-melodic-joy
-    sudo apt install ros-melodic-teleop-twist-joy
-    sudo apt install ros-melodic-pointcloud-to-laserscan
-    sudo apt install ros-melodic-imu-filter-madgwick
-    sudo apt install ros-melodic-rviz-imu-plugin
+    sudo apt install -y build-essential
+    sudo apt install -y libasio-dev
+    sudo apt install -y ros-melodic-teleop-twist-keyboard
+    sudo apt install -y ros-melodic-ros-control
+    sudo apt install -y ros-melodic-ros-controllers
+    sudo apt install -y ros-melodic-joint-state-publisher-gui 
+    sudo apt install -y ros-melodic-robot-state-publisher 
+    sudo apt install -y ros-melodic-roslint
+    sudo apt install -y ros-melodic-teleop-twist-joy
+    sudo apt install -y ros-melodic-move-base
+    sudo apt install -y ros-melodic-rqt 
+    sudo apt install -y ros-melodic-rqt-common-plugins
+    sudo apt install -y ros-melodic-rqt-robot-plugins 
+    sudo apt install -y ros-melodic-rqt-robot-steering
+    sudo apt install -y ros-melodic-dwa-local-planner
+    sudo apt install -y ros-melodic-lms1xx
+    sudo apt install -y ros-melodic-velodyne-description
+    sudo apt install -y ros-melodic-realsense2-camera
+    sudo apt install -y ros-melodic-realsense2-description
+    sudo apt install -y ros-melodic-robot-localization
+    sudo apt install -y ros-melodic-interactive-marker-twist-server
+    sudo apt install -y ros-melodic-twist-mux
+    sudo apt install -y ros-melodic-joy
+    sudo apt install -y ros-melodic-teleop-twist-joy
+    sudo apt install -y ros-melodic-pointcloud-to-laserscan
+    sudo apt install -y ros-melodic-imu-filter-madgwick
+    sudo apt install -y ros-melodic-rviz-imu-plugin
+    sudo apt install -y ros-melodic-gmapping
+    sudo apt install -y ros-melodic-map-server
 
     ```
 * Install ROS drivers for sensors
@@ -232,6 +234,39 @@ Use Rviz to set a goal position and orientation.
 
 ## SLAM Test inside Gazebo
 
+### Gmapping
+
+#### Building a map
+
+```bash
+roslaunch scout_gazebo scout_playpen.launch
+```
+
+Open another terminal.
+```bash
+roslaunch scout_navigation gmapping.launch
+```
+
+Drive the robot to build a map. You can save a map using `map_saver` of `map_server`.
+
+```bash
+rosrun map_server map_saver -f <map-filename>
+```
+#### Navigation
+
+Start `map_server`.
+```bash
+rosrun map_server map_server <map-filename>
+```
+
+Start `gmapping_navigation`.
+```bash
+roslaunch scout_navigation gmapping_navigation.launch
+```
+
+In the `rviz`, you will see a map. Set a goal with the `2D Nav Gaol` button. If the goal position can make a path from the current robot position, the robot will start moving.
+
+
 ### ACML
 
 ```bash
@@ -240,7 +275,7 @@ roslaunch scout_gazebo scout_playpen.launch
 
 Open another terminal.
 ```bash
-roslaunch husky_navigation map_based_navigation.launch
+roslaunch scout_navigation acml_navigation.launch
 ```
 
 - Turn on `Navigation` in the Rviz.
