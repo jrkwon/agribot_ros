@@ -24,7 +24,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCL
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <launch>
-  <arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'realsense/scan'))" />
+  <!-- arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'realsense/scan'))" / -->
+  <arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'scan'))" />
 
   <!--- Run gmapping -->
   <include file="$(find scout_navigation)/launch/gmapping.launch">

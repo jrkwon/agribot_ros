@@ -25,7 +25,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 -->
 <launch>
 
-  <arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'realsense/scan'))" />
+  <!-- arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'realsense/scan'))" / -->
+  <arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'scan'))" />
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
     <rosparam>
