@@ -26,8 +26,11 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 <launch>
 
   <!-- Run the map server -->
-  <arg name="map_file" default="$(find scout_description)/maps/$(arg map_file).yaml"/>
+  <!-- Remove it to make it similar to gammping startup
+  <arg name="map_file" default="$(find scout_description)/maps/playpen_map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  --> 
+
   <!-- arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'realsense/scan'))" / -->
   <arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'scan'))" />
 

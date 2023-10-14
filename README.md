@@ -256,12 +256,12 @@ rosrun map_server map_saver -f <map-filename>
 
 Start `map_server`.
 ```bash
-rosrun map_server map_server <map-filename>
+rosrun map_server map_server <map-filename>.yaml
 ```
 
 Start `gmapping_navigation`.
 ```bash
-roslaunch scout_navigation gmapping_navigation.launch
+roslaunch scout_navigation gmapping_navigation.launch 
 ```
 
 In the `rviz`, you will see a map. Set a goal with the `2D Nav Gaol` button. If the goal position can make a path from the current robot position, the robot will start moving.
