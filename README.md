@@ -1,4 +1,4 @@
-# ROS Packages for Scout Mobile Robot
+# ROS Packages for Intelligent Agricultural Robot (IntAgriBot)
 
 |     |     |
 | --- | --- |
