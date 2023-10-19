@@ -2,11 +2,16 @@
 
 |     |     |
 | --- | --- |
-|[![](imgs4doc/Screenshot%20from%202023-10-19%2015-37-02.png)](https://youtu.be/rVcciveJfKU?si=lhQSgN02Y8Vuk5ng&t=43) 
-|[![](imgs4doc/Screenshot%20from%202023-10-19%2015-38-50.png)](https://youtu.be/GukfHfFEHn8?si=X4M5XpfrAGH2_Onu&t=137) |
-|[![](imgs4doc/Screenshot%20from%202023-10-19%2015-46-00.png)](https://www.youtube.com/watch?v=znjis1Ic5aY) 
-| [![](imgs4doc/Screenshot%20from%202023-10-19%2015-46-31.png)](https://www.youtube.com/watch?v=BJmxsDKP5yE) |
+|![](imgs4doc/Screenshot%20from%202023-10-19%2015-37-02.png)
+|![](imgs4doc/Screenshot%20from%202023-10-19%2015-38-50.png) |
+|![](imgs4doc/Screenshot%20from%202023-10-19%2015-46-00.png)
+|![](imgs4doc/Screenshot%20from%202023-10-19%2015-46-31.png) |
 
+
+- https://youtu.be/rVcciveJfKU?si=lhQSgN02Y8Vuk5ng&t=43
+- https://youtu.be/GukfHfFEHn8?si=X4M5XpfrAGH2_Onu&t=137
+- https://www.youtube.com/watch?v=znjis1Ic5aY 
+- https://www.youtube.com/watch?v=BJmxsDKP5yE
 
 ## History
 
