@@ -2,8 +2,8 @@
 
 |     |     |
 | --- | --- |
-|![](imgs4doc/Screenshot%20from%202023-10-19%2015-37-02.png) |![](imgs4doc/Screenshot%20from%202023-10-19%2015-38-50.png) |
-|![](imgs4doc/Screenshot%20from%202023-10-19%2015-46-00.png) |![](imgs4doc/Screenshot%20from%202023-10-19%2015-46-31.png) |
+|![](imgs4readme/Screenshot%20from%202023-10-19%2015-37-02.png) |![](imgs4readme/Screenshot%20from%202023-10-19%2015-38-50.png) |
+|![](imgs4readme/Screenshot%20from%202023-10-19%2015-46-00.png) |![](imgs4readme/Screenshot%20from%202023-10-19%2015-46-31.png) |
 
 
 - https://youtu.be/rVcciveJfKU?si=lhQSgN02Y8Vuk5ng&t=43
