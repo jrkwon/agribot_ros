@@ -273,7 +273,7 @@ In the `rviz`, you will see a map. Set a goal with the `2D Nav Gaol` button. If 
 
 ## Implementation and Contributors
 - Woojin Jeong, Ph.D., WApplE Cloud Co., Ltd., Korea
-- Youngseek Choe, Ph.D., Professor at Wonkwang University, Korea
+- Young Seek Cho, Ph.D., Professor at Wonkwang University, Korea
 - Elahe Delavari, Ph.D. student, in Electrical and Computer Engineering at the University of Michigan-Dearborn
 - Feeza Khanzada, Ph.D. student, in Electrical and Computer Engineering at the University of Michigan-Dearborn
 
