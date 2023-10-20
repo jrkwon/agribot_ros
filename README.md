@@ -262,7 +262,7 @@ In the `rviz`, you will see a map. Set a goal with the `2D Nav Gaol` button. If 
 
 
 - Make sure `Navigation` is checked in the Rviz.
-- You will see a map (playpen).
+- You will see a map.
 - Set a goal with the `2D Nav Gaol` button.
 
 
