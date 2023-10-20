@@ -269,13 +269,13 @@ In the `rviz`, you will see a map. Set a goal with the `2D Nav Gaol` button. If 
 # Acknowledgments
 
 ## System Design and Implementation
-- Jaerock Kwon, Ph.D., Assistant Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn
+- Jaerock Kwon, PhD, Assistant Professor, Electrical and Computer Engineering, University of Michigan-Dearborn
 
 ## Implementation and Contributors
-- Woojin Jeong, Ph.D., WApplE Cloud Co., Ltd., Korea
-- Young Seek Cho, Ph.D., Professor at Wonkwang University, Korea
-- Elahe Delavari, Ph.D. student, in Electrical and Computer Engineering at the University of Michigan-Dearborn
-- Feeza Khanzada, Ph.D. student, in Electrical and Computer Engineering at the University of Michigan-Dearborn
+- Woojin Jeong, PhD, WApplE Cloud Co., Ltd., Korea
+- Young Seek Cho, PhD, Professor at Wonkwang University, Korea
+- Elahe Delavari, PhD student, Electrical and Computer Engineering, University of Michigan-Dearborn
+- Feeza Khanzada, PhD student, Electrical and Computer Engineering, University of Michigan-Dearborn
 
 ## References
 - https://github.com/husky/husky/tree/melodic-devel
