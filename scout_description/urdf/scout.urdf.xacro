@@ -44,7 +44,7 @@
     <xacro:property name="scout_rear_bumper_extend" value="$(optenv SCOUT_REAR_BUMPER_EXTEND 0)" />
 
     <!-- Height of the sensor arch in mm.  Must be either 510 or 300 -->
-    <xacro:arg name="sensor_arch_height"  default="$(optenv SCOUT_SENSOR_ARCH_HEIGHT 510)" />
+    <xacro:arg name="sensor_arch_height"  default="$(optenv SCOUT_SENSOR_ARCH_HEIGHT 300)" />
     <xacro:arg name="sensor_arch"         default="$(optenv SCOUT_SENSOR_ARCH 0)" />
 
     <xacro:arg name="robot_namespace" default="$(optenv ROBOT_NAMESPACE /)" />
