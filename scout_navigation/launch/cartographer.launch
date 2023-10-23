@@ -15,14 +15,19 @@
 -->
 
 <launch>
+    <arg name="scan_topic" default="/scan" />
+    <arg name="imu_topic"  default="/imu/data" />
+    <arg name="odom_topic" default="/odometry/filtered" />
+
     <node name="cartographer_node" pkg="cartographer_ros"
         type="cartographer_node" args="
             -configuration_directory
                 $(find scout_navigation)/config
             -configuration_basename scout.lua"
         output="screen">
-      <!-- remap from="scan" to="front/scan" / -->
-      <!-- remap from="odom" to="odometry/filtered" / -->
+        <remap from="imu" to="$(arg imu_topic)" />
+        <remap from="odom" to="$(arg odom_topic)" />
+        <remap from="scan" to="$(arg scan_topic)" />
     </node>
   
     <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
