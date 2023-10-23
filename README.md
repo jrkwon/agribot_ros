@@ -10,6 +10,7 @@
 
 This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
 
+* 10/23/2023: Change the build system. `catkin_make` --> `catkin_make_isolated` to support `cartographer`
 * 10/19/2023: Add Gmapping and AMCL test with a simulated 2D LiDAR
 * 10/12/2023: Add simulated `YDLIDAR` for `Gazebo`.
 * 08/09/2023: Add `xavier` param for `start.launch`. The default is `xavier` where the default FPS of Realsense camera is 15.
