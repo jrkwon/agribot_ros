@@ -1,4 +1,5 @@
 <launch>
+
   <!-- Include poincloud_to_laserscan if simulated realsense is attached -->
   <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="realsense_to_laserscan" output="screen">
 
@@ -26,4 +27,13 @@
           concurrency_level: 1
       </rosparam>
   </node>
+
+    <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter" output="screen">
+    <param name="use_mag" value="false"/>
+    <param name="publish_tf" value="false"/>
+    <param name="world_frame" value="enu"/>
+    <remap from="/imu/data_raw" to="/camera/imu"/>
+    <remap from="/imu/data" to="/rtabmap/imu"/>
+  </node>
+
 </launch>
