@@ -25,6 +25,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 -->
 <launch>
 
+    <arg name="rviz" default="true"/>
     <arg name="robot_namespace" default="/"/>
     <arg name="world_name" default="$(find scout_gazebo)/worlds/clearpath_playpen.world"/>
 
@@ -39,5 +40,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
     <include file="$(find scout_gazebo)/launch/spawn_scout.launch"></include>
         
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_viz)/rviz/robot.rviz" />
+    <group if="$(arg rviz)">
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_viz)/rviz/robot.rviz" />
+    </group>  
 </launch>
