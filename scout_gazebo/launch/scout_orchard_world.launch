@@ -1,6 +1,7 @@
 <launch>
     <param name="orchard_geom" command="$(find xacro)/xacro --inorder '$(find scout_gazebo)/urdf/orchard_geometry.urdf.xacro'" />
 
+    <arg name="rviz" default="true"/>
     <arg name="platform" default="scout" />
     <arg name="x" default="11.0"/>
     <arg name="y" default="11.0"/>
@@ -29,6 +30,8 @@
       <arg name="yaw" value="$(arg yaw)"/>
     </include>
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_viz)/rviz/robot.rviz" />
+    <group if="$(arg rviz)">
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_viz)/rviz/robot.rviz" />
+    </group>
 
 </launch>
