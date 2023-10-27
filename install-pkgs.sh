@@ -27,3 +27,4 @@ sudo apt install -y ros-melodic-imu-filter-madgwick
 sudo apt install -y ros-melodic-rviz-imu-plugin
 sudo apt install -y ros-melodic-gmapping
 sudo apt install -y ros-melodic-map-server
+sudo apt install -y ros-melodic-octomap-rviz-plugins

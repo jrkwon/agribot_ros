@@ -20,14 +20,15 @@
   <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
       <arg name="args" value="$(arg args) $(arg grid) --Optimizer/GravitySigma 0.3"/>
       <arg name="rgb_topic" value="/camera/color/image_raw"/>
-      <arg name="depth_topic" value="/camera/aligned_depth_to_color/image_raw"/>
+      <arg name="depth_topic" value="/camera/depth/image_rect_raw"/> <!-- /camera/aligned_depth_to_color/image_raw"/ -->
       <arg name="camera_info_topic" value="/camera/color/camera_info"/>
       <arg name="depth_camera_info_topic" value="/camera/depth/camera_info"/>
       <arg name="approx_sync" value="false"/>
       <arg name="wait_imu_to_init" value="true"/>
-      <arg name="imu_topic" value="/rtabmap/imu"/>
+      <!-- arg name="imu_topic" value="/rtabmap/imu"/ --> 
 
       <arg name="frame_id" value="base_link"/>
+
       <!-- inputs -->
       <remap from="/odometry/filtered" to="/odom"/>
       <!-- output -->

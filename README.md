@@ -56,7 +56,8 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     sudo apt install -y ros-melodic-rviz-imu-plugin
     sudo apt install -y ros-melodic-gmapping
     sudo apt install -y ros-melodic-map-server
-
+    sudo apt install -y ros-melodic-octomap-rviz-plugins
+# 
     ```
 * Install ROS drivers for sensors
     (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
@@ -304,34 +305,14 @@ roslaunch scout_control teleop.launch
 
 ## SLAM Test
 
-### RTABMap
-
-RTABMap Test with RealSense D435i
-Mapping.
-
-#### Map Buidling
-The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
-In the example below, `wonkwang` is used for a map id.
-```bash
-roslaunch scout_navigation rtabmap_map.launch map_id:=wonkwang
-```
-
-#### Localization (Autonomous Navigation)
-The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
-In the example below, `wonkwang` is used for a map id. This means that the robot will use the map, `wonkwang`, that has been built in the previous step, to navigate the environment.
-
-```bash
-roslaunch scout_navigation rtabmap_localization.launch map_id:=wonkwang
-```
-
-Use Rviz to set a goal position and orientation.
-
-## SLAM Test inside Gazebo
-
 ### Gmapping: Build a map
 
+If you test a SLAM inside the `Gazebo`, start a `Gazebo` with a `world` file. The available world names are 
+* `scout_playpen`
+* `scout_orchard_world`
+
 ```bash
-roslaunch scout_gazebo scout_playpen.launch
+roslaunch scout_gazebo <world_name>.launch
 ```
 
 Open another terminal.
@@ -358,6 +339,29 @@ In the `rviz`, you will see a map. Set a goal with the `2D Nav Gaol` button. If 
 - You will see a map.
 - Set a goal with the `2D Nav Gaol` button.
 
+### RTabMap
+
+For RTabMap, `rtabmap_map` and `rtabmap_navigation` use a different `rviz` configuration. So, `scout_gazebo` is not supposed to start `rviz`. Use `rviz:=false`
+
+```bash
+roslaunch scout_gazebo <world_name>.launch rviz:=false
+```
+#### Map Buidling
+The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
+
+```bash
+roslaunch scout_navigation rtabmap_map.launch map_id:=<map_id>
+```
+
+#### Navigation
+Note that RTabMap does not use `amcl` for navigation. 
+The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
+
+```bash
+roslaunch scout_navigation rtabmap_navigation.launch map_id:=<map_id>
+```
+
+Use Rviz to set a goal position and orientation.
 
 # Acknowledgments
 
