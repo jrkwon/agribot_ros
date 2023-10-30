@@ -3,6 +3,11 @@
 *.db
 
 ###############
+# rtabmap 3D model ply
+*.ply
+
+
+###############
 # vscode
 .vscode/
 

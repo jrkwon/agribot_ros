@@ -4,8 +4,6 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Sensing1
-        - /Sensing1/Camera2
         - /Navigation1/Exploration1
       Splitter Ratio: 0.49492400884628296
     Tree Height: 157

@@ -5,11 +5,13 @@
 |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-37-02.png)](https://youtu.be/rVcciveJfKU?si=lhQSgN02Y8Vuk5ng&t=43) |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-38-50.png)](https://youtu.be/GukfHfFEHn8?si=X4M5XpfrAGH2_Onu&t=137) |
 |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-46-00.png)](https://www.youtube.com/watch?v=znjis1Ic5aY) |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-46-31.png)](https://www.youtube.com/watch?v=BJmxsDKP5yE) |
 | [![](imgs4readme/Screenshot%20from%202023-10-20%2022-31-07.png)](https://youtu.be/uOn5wt181LE?si=tM1hGc1WyrUAoe0D) |[![](imgs4readme/Screenshot%20from%202023-10-25%2010-50-46.png)](https://youtu.be/EdV-s1XxeMA) | 
+| [![](imgs4readme/Screenshot%20from%202023-10-29%2014-27-43.png)](https://youtu.be/kV945FQjKj4) | | 
 
 ## History
 
 This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
 
+* 10/29/2023: Add RTabMap example. Tested in the Gazebo simulator.
 * 10/23/2023: Change the build system. `catkin_make` --> `catkin_make_isolated` to support `cartographer`
 * 10/19/2023: Add Gmapping and AMCL test with a simulated 2D LiDAR
 * 10/12/2023: Add simulated `YDLIDAR` for `Gazebo`.
@@ -167,9 +169,9 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     </package>
     ```
 
-    Build and install.
+    Build.
     ```bash
-    catkin_make_isolated --install --use-ninja
+    catkin_make_isolated --use-ninja
     ```
 
 
@@ -184,7 +186,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     ```
 * Don't forget do `source` before using it.
     ```bash
-    source install_isolated/setup.bash
+    source devel_isolated/setup.bash
     ```
 
 ## Packages
