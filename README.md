@@ -5,7 +5,7 @@
 |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-37-02.png)](https://youtu.be/rVcciveJfKU?si=lhQSgN02Y8Vuk5ng&t=43) |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-38-50.png)](https://youtu.be/GukfHfFEHn8?si=X4M5XpfrAGH2_Onu&t=137) |
 |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-46-00.png)](https://www.youtube.com/watch?v=znjis1Ic5aY) |[![](imgs4readme/Screenshot%20from%202023-10-19%2015-46-31.png)](https://www.youtube.com/watch?v=BJmxsDKP5yE) |
 | [![](imgs4readme/Screenshot%20from%202023-10-20%2022-31-07.png)](https://youtu.be/uOn5wt181LE?si=tM1hGc1WyrUAoe0D) |[![](imgs4readme/Screenshot%20from%202023-10-25%2010-50-46.png)](https://youtu.be/EdV-s1XxeMA) | 
-| [![](imgs4readme/Screenshot%20from%202023-10-29%2014-27-43.png)](https://youtu.be/kV945FQjKj4) | | 
+| [![](imgs4readme/Screenshot%20from%202023-10-29%2014-27-43.png)](https://youtu.be/kV945FQjKj4) | [![](imgs4readme/Screenshot%20from%202023-10-30%2015-47-04.png)](https://youtu.be/raS2ska8KoU)| 
 
 ## History
 
