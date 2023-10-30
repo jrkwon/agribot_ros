@@ -355,6 +355,10 @@ The `map_id` is used to identify a map. If you build several maps, you can idenf
 roslaunch scout_navigation rtabmap_map.launch map_id:=<map_id>
 ```
 
+This is an example of a map visualize by `rtabmap-databaseViewer`.
+
+![](imgs4readme/Screenshot%20from%202023-10-30%2014-29-03.png)
+
 #### Navigation
 Note that RTabMap does not use `amcl` for navigation. 
 The `map_id` is used to identify a map. If you build several maps, you can idenfify a map with `map_id`.
