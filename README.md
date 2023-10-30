@@ -169,9 +169,9 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     </package>
     ```
 
-    Build and install.
+    Build.
     ```bash
-    catkin_make_isolated --install --use-ninja
+    catkin_make_isolated --use-ninja
     ```
 
 
@@ -186,7 +186,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     ```
 * Don't forget do `source` before using it.
     ```bash
-    source install_isolated/setup.bash
+    source devel_isolated/setup.bash
     ```
 
 ## Packages
