@@ -63,8 +63,8 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     ```
 * Install ROS drivers for sensors
     * YDLIDAR SDK `https://github.com/YDLIDAR/YDLidar-SDK`
+        
         ```bash
-        cd ~/catkin_ws/src
         git clone https://github.com/YDLIDAR/YDLidar-SDK.git
         cd YDLidar-SDK
         mkdir build
@@ -73,7 +73,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
         make
         sudo make install
         ```
-    (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
+    (the following instructions assume your catkin workspace is `catkin_ws`)
     * YDLIDAR ROS Driver `https://github.com/YDLIDAR/ydlidar_ros_driver`
         ```bash
         cd ~/catkin_ws/src
@@ -90,8 +90,8 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     sudo apt-get install -y python-wstool python-rosdep ninja-build stow
     ```
 
-    (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
     ```bash
+    mkdir -p carto/catkin_ws
     cd ~/catkin_ws/
     wstool init src
     wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
