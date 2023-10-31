@@ -175,20 +175,6 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     ```
 
 
-* Clone the packages into your catkin workspace and compile
-
-    (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
-
-    ```bash
-    cd ~/catkin_ws/src
-    git clone https://github.com/agilexrobotics/ugv_sdk.git  
-    git clone https://github.com/jrkwon/agribot.git
-    ```
-* Don't forget do `source` before using it.
-    ```bash
-    source devel_isolated/setup.bash
-    ```
-
 ## Packages
 
 * scout_base: robot node that communicates with the robot hardware
