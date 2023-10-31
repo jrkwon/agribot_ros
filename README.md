@@ -62,7 +62,6 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
 # 
     ```
 * Install ROS drivers for sensors
-    (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
     * YDLIDAR SDK `https://github.com/YDLIDAR/YDLidar-SDK`
         ```bash
         cd ~/catkin_ws/src
@@ -74,6 +73,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
         make
         sudo make install
         ```
+    (the following instructions assume your catkin workspace is at: `~/catkin_ws/src`)
     * YDLIDAR ROS Driver `https://github.com/YDLIDAR/ydlidar_ros_driver`
         ```bash
         cd ~/catkin_ws/src
@@ -182,7 +182,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     ```bash
     cd ~/catkin_ws/src
     git clone https://github.com/agilexrobotics/ugv_sdk.git  
-    git clone https://github.com/jrkwon/intagribot.git
+    git clone https://github.com/jrkwon/agribot.git
     ```
 * Don't forget do `source` before using it.
     ```bash
