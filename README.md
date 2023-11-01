@@ -59,120 +59,113 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     sudo apt install -y ros-melodic-gmapping
     sudo apt install -y ros-melodic-map-server
     sudo apt install -y ros-melodic-octomap-rviz-plugins
-# 
     ```
-* Install ROS drivers for sensors
-    * YDLIDAR SDK `https://github.com/YDLIDAR/YDLidar-SDK`
-        
-        ```bash
-        git clone https://github.com/YDLIDAR/YDLidar-SDK.git
-        cd YDLidar-SDK
-        mkdir build
-        cd build
-        cmake ..
-        make
-        sudo make install
-        ```
-    (the following instructions assume your catkin workspace is `catkin_ws`)
-    * YDLIDAR ROS Driver `https://github.com/YDLIDAR/ydlidar_ros_driver`
-        ```bash
-        cd ~/catkin_ws/src
-        git clone https://github.com/YDLIDAR/ydlidar_ros_driver.git 
-        ```
-
-* Install Cartographer ROS
-
+### Install SDKs for sensors
+* YDLIDAR SDK `https://github.com/YDLIDAR/YDLidar-SDK`
+    
     ```bash
-    sudo apt update
+    git clone https://github.com/YDLIDAR/YDLidar-SDK.git
+    cd YDLidar-SDK
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
     ```
 
-    ```bash
-    sudo apt-get install -y python-wstool python-rosdep ninja-build stow
-    ```
+### Install Cartographer ROS
 
-    ```bash
-    mkdir -p carto/catkin_ws
-    cd ~/catkin_ws/
-    wstool init src
-    wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
-    wstool update -t src
-    ```
+```bash
+sudo apt update
+```
 
-    ```bash
-    rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
-    ```
+```bash
+sudo apt-get install -y python-wstool python-rosdep ninja-build stow
+```
 
-    Cartographer uses the `abseil-cpp` library that needs to be manually installed using this script:
-    ```bash
-    src/cartographer/scripts/install_abseil.sh
-    ```
+```bash
+mkdir -p carto/catkin_ws
+cd ~/catkin_ws/
+wstool init src
+wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
+wstool update -t src
+```
 
-    Commment out `libabsl-dev` in `package.xml` inside the `cartographer` directory.
+```bash
+rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
+```
 
-    ```xml
-    <?xml version="1.0"?>
-    <!--
-    Copyright 2016 The Cartographer Authors
+Cartographer uses the `abseil-cpp` library that needs to be manually installed using this script:
+```bash
+src/cartographer/scripts/install_abseil.sh
+```
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+Commment out `libabsl-dev` in `package.xml` inside the `cartographer` directory.
 
-        http://www.apache.org/licenses/LICENSE-2.0
+```xml
+<?xml version="1.0"?>
+<!--
+Copyright 2016 The Cartographer Authors
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-    -->
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-    <package format="3">
-    <name>cartographer</name>
-    <version>2.0.0</version>
-    <description>
-        Cartographer is a system that provides real-time simultaneous localization
-        and mapping (SLAM) in 2D and 3D across multiple platforms and sensor
-        configurations.
-    </description>
-    <maintainer email="cartographer-owners@googlegroups.com">
-        The Cartographer Authors
-    </maintainer>
-    <license>Apache 2.0</license>
+    http://www.apache.org/licenses/LICENSE-2.0
 
-    <url>https://github.com/cartographer-project/cartographer</url>
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
 
-    <author email="google-cartographer@googlegroups.com">
-        The Cartographer Authors
-    </author>
+<package format="3">
+<name>cartographer</name>
+<version>2.0.0</version>
+<description>
+    Cartographer is a system that provides real-time simultaneous localization
+    and mapping (SLAM) in 2D and 3D across multiple platforms and sensor
+    configurations.
+</description>
+<maintainer email="cartographer-owners@googlegroups.com">
+    The Cartographer Authors
+</maintainer>
+<license>Apache 2.0</license>
 
-    <buildtool_depend>cmake</buildtool_depend>
+<url>https://github.com/cartographer-project/cartographer</url>
 
-    <build_depend>git</build_depend>
-    <build_depend>google-mock</build_depend>
-    <build_depend>gtest</build_depend>
-    <build_depend>python3-sphinx</build_depend>
+<author email="google-cartographer@googlegroups.com">
+    The Cartographer Authors
+</author>
 
-    <depend>libboost-iostreams-dev</depend>
-    <depend>eigen</depend>
-    <!-- depend>libabsl-dev</depend -->
-    <depend>libcairo2-dev</depend>
-    <depend>libceres-dev</depend>
-    <depend>libgflags-dev</depend>
-    <depend>libgoogle-glog-dev</depend>
-    <depend>lua5.2-dev</depend>
-    <depend>protobuf-dev</depend>
+<buildtool_depend>cmake</buildtool_depend>
 
-    <export>
-        <build_type>cmake</build_type>
-    </export>
-    </package>
-    ```
+<build_depend>git</build_depend>
+<build_depend>google-mock</build_depend>
+<build_depend>gtest</build_depend>
+<build_depend>python3-sphinx</build_depend>
 
-    Build.
-    ```bash
-    catkin_make_isolated --use-ninja
-    ```
+<depend>libboost-iostreams-dev</depend>
+<depend>eigen</depend>
+<!-- depend>libabsl-dev</depend -->
+<depend>libcairo2-dev</depend>
+<depend>libceres-dev</depend>
+<depend>libgflags-dev</depend>
+<depend>libgoogle-glog-dev</depend>
+<depend>lua5.2-dev</depend>
+<depend>protobuf-dev</depend>
+
+<export>
+    <build_type>cmake</build_type>
+</export>
+</package>
+```
+
+Build and Install
+```bash
+catkin_make_isolated --install --use-ninja
+```
 
 
 ## Packages
@@ -197,7 +190,7 @@ A CAN port number must be given. The following code uses CAN1 as an example.
     ```
 * ELSE: Start CAN bus. Assumption: You're at `~/catkin_ws`
     ```bash
-    ./src/intagribot/start_can.sh 1
+    ./src/agribot_ros/start_can.sh 1
     ```
 * Start the base node for scout. The CAN port number can be identified. The default joystick type is XBox. If you want to use the AgileX joystick, you should set `agilex_joystick` be true. 
 

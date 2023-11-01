@@ -1,1 +1,1 @@
-bash ./src/intagribot/scout_bringup/scripts/bringup_can2usb.bash $1
+bash ./src/agribot_ros/scout_bringup/scripts/bringup_can2usb.bash $1
