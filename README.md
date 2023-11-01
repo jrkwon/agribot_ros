@@ -73,7 +73,7 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
     sudo make install
     ```
 
-### Install Cartographer ROS
+### Install Cartographer SDK and Cartographer ROS
 
 ```bash
 sudo apt update
