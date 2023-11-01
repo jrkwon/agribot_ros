@@ -26,40 +26,42 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
 * 05/15/2023: Add a orchard world to test SLAM algorithms in simulation.
 
 ## Installation
-* Install dependent libraries
 
-    ```bash
-    sudo apt install -y build-essential
-    sudo apt install -y libasio-dev
-    sudo apt install -y ros-melodic-teleop-twist-keyboard
-    sudo apt install -y ros-melodic-ros-control
-    sudo apt install -y ros-melodic-ros-controllers
-    sudo apt install -y ros-melodic-joint-state-publisher-gui 
-    sudo apt install -y ros-melodic-robot-state-publisher 
-    sudo apt install -y ros-melodic-roslint
-    sudo apt install -y ros-melodic-teleop-twist-joy
-    sudo apt install -y ros-melodic-move-base
-    sudo apt install -y ros-melodic-rqt 
-    sudo apt install -y ros-melodic-rqt-common-plugins
-    sudo apt install -y ros-melodic-rqt-robot-plugins 
-    sudo apt install -y ros-melodic-rqt-robot-steering
-    sudo apt install -y ros-melodic-dwa-local-planner
-    sudo apt install -y ros-melodic-lms1xx
-    sudo apt install -y ros-melodic-velodyne-description
-    sudo apt install -y ros-melodic-realsense2-camera
-    sudo apt install -y ros-melodic-realsense2-description
-    sudo apt install -y ros-melodic-robot-localization
-    sudo apt install -y ros-melodic-interactive-marker-twist-server
-    sudo apt install -y ros-melodic-twist-mux
-    sudo apt install -y ros-melodic-joy
-    sudo apt install -y ros-melodic-teleop-twist-joy
-    sudo apt install -y ros-melodic-pointcloud-to-laserscan
-    sudo apt install -y ros-melodic-imu-filter-madgwick
-    sudo apt install -y ros-melodic-rviz-imu-plugin
-    sudo apt install -y ros-melodic-gmapping
-    sudo apt install -y ros-melodic-map-server
-    sudo apt install -y ros-melodic-octomap-rviz-plugins
-    ```
+### Install dependent libraries
+
+```bash
+sudo apt install -y build-essential
+sudo apt install -y libasio-dev
+sudo apt install -y ros-melodic-teleop-twist-keyboard
+sudo apt install -y ros-melodic-ros-control
+sudo apt install -y ros-melodic-ros-controllers
+sudo apt install -y ros-melodic-joint-state-publisher-gui 
+sudo apt install -y ros-melodic-robot-state-publisher 
+sudo apt install -y ros-melodic-roslint
+sudo apt install -y ros-melodic-teleop-twist-joy
+sudo apt install -y ros-melodic-move-base
+sudo apt install -y ros-melodic-rqt 
+sudo apt install -y ros-melodic-rqt-common-plugins
+sudo apt install -y ros-melodic-rqt-robot-plugins 
+sudo apt install -y ros-melodic-rqt-robot-steering
+sudo apt install -y ros-melodic-dwa-local-planner
+sudo apt install -y ros-melodic-lms1xx
+sudo apt install -y ros-melodic-velodyne-description
+sudo apt install -y ros-melodic-realsense2-camera
+sudo apt install -y ros-melodic-realsense2-description
+sudo apt install -y ros-melodic-robot-localization
+sudo apt install -y ros-melodic-interactive-marker-twist-server
+sudo apt install -y ros-melodic-twist-mux
+sudo apt install -y ros-melodic-joy
+sudo apt install -y ros-melodic-teleop-twist-joy
+sudo apt install -y ros-melodic-pointcloud-to-laserscan
+sudo apt install -y ros-melodic-imu-filter-madgwick
+sudo apt install -y ros-melodic-rviz-imu-plugin
+sudo apt install -y ros-melodic-gmapping
+sudo apt install -y ros-melodic-map-server
+sudo apt install -y ros-melodic-octomap-rviz-plugins
+```
+
 ### Install SDKs for sensors
 * YDLIDAR SDK `https://github.com/YDLIDAR/YDLidar-SDK`
     
