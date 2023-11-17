@@ -78,17 +78,21 @@ sudo apt install -y ros-$ROS_DISTRO-octomap-rviz-plugins
 
 ### Install Cartographer SDK and Cartographer ROS
 
+Follow the official link for Cartographer installation if there is any discrepancy.
+
 ```bash
 sudo apt update
 ```
 
 ```bash
-sudo apt-get install -y python-wstool python-rosdep ninja-build stow
+sudo apt-get install -y python3-wstool python3-rosdep ninja-build stow
 ```
+
+Since the source code doesn't need to stay after installation, you can do this at your temporary directory, such as `Download`.
 
 ```bash
 mkdir -p carto/catkin_ws
-cd ~/catkin_ws/
+cd carto/catkin_ws/
 wstool init src
 wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
 wstool update -t src
