@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Copyright 2017 Open Source Robotics Foundation
 #
@@ -18,6 +18,11 @@
 import rospy
 from scout_msgs.msg import ScoutControl
 from sensor_msgs.msg import Joy
+
+import const
+from config import Config
+
+config = Config.data_collection
 
 #######################################
 ## Logitech F710 
@@ -77,7 +82,7 @@ SMALL_VALUE = 0.0001
 
 class Translator:
     def __init__(self):
-        self.sub = rospy.Subscriber("joy", Joy, self.callback)
+        self.sub = rospy.Subscriber(config['joystick_topic'], Joy, self.callback)
         self.pub = rospy.Publisher('scout', ScoutControl, queue_size=1)
         self.last_published_time = rospy.get_rostime()
         self.last_published = None
