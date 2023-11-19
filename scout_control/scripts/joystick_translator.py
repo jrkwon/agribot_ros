@@ -84,6 +84,7 @@ class Translator:
     def __init__(self):
         self.sub = rospy.Subscriber(config['joystick_topic'], Joy, self.callback)
         self.pub = rospy.Publisher(config['vehicle_control_topic'], ScoutControl, queue_size=1)
+        #self.pub = rospy.Publisher('scout', ScoutControl, queue_size=1)
         self.last_published_time = rospy.get_rostime()
         self.last_published = None
         self.timer = rospy.Timer(rospy.Duration(1./20.), self.timer_callback)
@@ -94,6 +95,9 @@ class Translator:
 
     def callback(self, message):
         rospy.logdebug("joy_translater received axes %s",message.axes)
+        if (len(message.axes) <= 2): # not a real joystick. abort
+            return
+
         command = ScoutControl()
         command.header = message.header
 
