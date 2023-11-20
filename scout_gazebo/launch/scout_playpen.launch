@@ -38,6 +38,13 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <arg name="debug" value="false"/>
     </include>
 
+    <node pkg="scout_control" type="scout_control_translator.py" name="scout_control_translator" />
+    <node pkg="scout_control" type="joystick_translator.py" name="joystick_translator" />
+    <!-- Run two joy nodes publishing to the same topic, just to cover two possible joystick locations -->
+    <node pkg="joy" type="joy_node" name="joy_node0">
+      <param name="joy_dev" value="$(optenv SCOUT_JOY_DEVICE /dev/input/js0)"/>
+    </node>
+
     <include file="$(find scout_gazebo)/launch/spawn_scout.launch"></include>
         
     <group if="$(arg rviz)">

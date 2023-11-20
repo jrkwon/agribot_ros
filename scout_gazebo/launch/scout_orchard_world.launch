@@ -21,6 +21,13 @@
       <arg name="world_name" value="$(arg world_name)" />
     </include>
 
+    <node pkg="scout_control" type="scout_control_translator.py" name="scout_control_translator" />
+    <node pkg="scout_control" type="joystick_translator.py" name="joystick_translator" />
+    <!-- Run two joy nodes publishing to the same topic, just to cover two possible joystick locations -->
+    <node pkg="joy" type="joy_node" name="joy_node0">
+      <param name="joy_dev" value="$(optenv SCOUT_JOY_DEVICE /dev/input/js0)"/>
+    </node>
+
     <node name="orchard_gazebo_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model orchard_geom -param orchard_geom -x 0 -y 0 -z 0 -Y 0" />
 
     <include file="$(find scout_gazebo)/launch/spawn_$(arg platform).launch">
