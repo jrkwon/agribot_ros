@@ -80,7 +80,7 @@ INIT_STERRING_FACTOR = 1
 # Small value
 SMALL_VALUE = 0.0001
 
-class Translator:
+class JoystickTranslator:
     def __init__(self):
         self.sub = rospy.Subscriber(config['joystick_topic'], Joy, self.callback)
         self.pub = rospy.Publisher(config['vehicle_control_topic'], ScoutControl, queue_size=1)
@@ -130,5 +130,5 @@ class Translator:
 
 if __name__ == '__main__':
     rospy.init_node('joystick_translator')
-    t = Translator()
+    t = JoystickTranslator()
     rospy.spin()
