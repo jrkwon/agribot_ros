@@ -11,8 +11,6 @@
 
 This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
 
-* 11/20/2023: Merge the `noetic-devel` branch to `master`
-* 11/16/2023: Start Noetic version
 * 10/29/2023: Add RTabMap example. Tested in the Gazebo simulator.
 * 10/23/2023: Change the build system. `catkin_make` --> `catkin_make_isolated` to support `cartographer`
 * 10/19/2023: Add Gmapping and AMCL test with a simulated 2D LiDAR
@@ -34,34 +32,34 @@ This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but la
 ```bash
 sudo apt install -y build-essential
 sudo apt install -y libasio-dev
-sudo apt install -y ros-melodic-teleop-twist-keyboard
-sudo apt install -y ros-melodic-ros-control
-sudo apt install -y ros-melodic-ros-controllers
-sudo apt install -y ros-melodic-joint-state-publisher-gui 
-sudo apt install -y ros-melodic-robot-state-publisher 
-sudo apt install -y ros-melodic-roslint
-sudo apt install -y ros-melodic-teleop-twist-joy
-sudo apt install -y ros-melodic-move-base
-sudo apt install -y ros-melodic-rqt 
-sudo apt install -y ros-melodic-rqt-common-plugins
-sudo apt install -y ros-melodic-rqt-robot-plugins 
-sudo apt install -y ros-melodic-rqt-robot-steering
-sudo apt install -y ros-melodic-dwa-local-planner
-sudo apt install -y ros-melodic-lms1xx
-sudo apt install -y ros-melodic-velodyne-description
-sudo apt install -y ros-melodic-realsense2-camera
-sudo apt install -y ros-melodic-realsense2-description
-sudo apt install -y ros-melodic-robot-localization
-sudo apt install -y ros-melodic-interactive-marker-twist-server
-sudo apt install -y ros-melodic-twist-mux
-sudo apt install -y ros-melodic-joy
-sudo apt install -y ros-melodic-teleop-twist-joy
-sudo apt install -y ros-melodic-pointcloud-to-laserscan
-sudo apt install -y ros-melodic-imu-filter-madgwick
-sudo apt install -y ros-melodic-rviz-imu-plugin
-sudo apt install -y ros-melodic-gmapping
-sudo apt install -y ros-melodic-map-server
-sudo apt install -y ros-melodic-octomap-rviz-plugins
+sudo apt install -y ros-$ROS_DISTRO-teleop-twist-keyboard
+sudo apt install -y ros-$ROS_DISTRO-ros-control
+sudo apt install -y ros-$ROS_DISTRO-ros-controllers
+sudo apt install -y ros-$ROS_DISTRO-joint-state-publisher-gui 
+sudo apt install -y ros-$ROS_DISTRO-robot-state-publisher 
+sudo apt install -y ros-$ROS_DISTRO-roslint
+sudo apt install -y ros-$ROS_DISTRO-teleop-twist-joy
+sudo apt install -y ros-$ROS_DISTRO-move-base
+sudo apt install -y ros-$ROS_DISTRO-rqt 
+sudo apt install -y ros-$ROS_DISTRO-rqt-common-plugins
+sudo apt install -y ros-$ROS_DISTRO-rqt-robot-plugins 
+sudo apt install -y ros-$ROS_DISTRO-rqt-robot-steering
+sudo apt install -y ros-$ROS_DISTRO-dwa-local-planner
+sudo apt install -y ros-$ROS_DISTRO-lms1xx
+sudo apt install -y ros-$ROS_DISTRO-velodyne-description
+sudo apt install -y ros-$ROS_DISTRO-realsense2-camera
+sudo apt install -y ros-$ROS_DISTRO-realsense2-description
+sudo apt install -y ros-$ROS_DISTRO-robot-localization
+sudo apt install -y ros-$ROS_DISTRO-interactive-marker-twist-server
+sudo apt install -y ros-$ROS_DISTRO-twist-mux
+sudo apt install -y ros-$ROS_DISTRO-joy
+sudo apt install -y ros-$ROS_DISTRO-teleop-twist-joy
+sudo apt install -y ros-$ROS_DISTRO-pointcloud-to-laserscan
+sudo apt install -y ros-$ROS_DISTRO-imu-filter-madgwick
+sudo apt install -y ros-$ROS_DISTRO-rviz-imu-plugin
+sudo apt install -y ros-$ROS_DISTRO-gmapping
+sudo apt install -y ros-$ROS_DISTRO-map-server
+sudo apt install -y ros-$ROS_DISTRO-octomap-rviz-plugins
 ```
 
 ### Install SDKs for sensors
@@ -79,17 +77,21 @@ sudo apt install -y ros-melodic-octomap-rviz-plugins
 
 ### Install Cartographer SDK and Cartographer ROS
 
+Follow the official link for Cartographer installation if there is any discrepancy.
+
 ```bash
 sudo apt update
 ```
 
 ```bash
-sudo apt-get install -y python-wstool python-rosdep ninja-build stow
+sudo apt-get install -y python3-wstool python3-rosdep ninja-build stow
 ```
+
+Since the source code doesn't need to stay after installation, you can do this at your temporary directory, such as `Download`.
 
 ```bash
 mkdir -p carto/catkin_ws
-cd ~/catkin_ws/
+cd carto/catkin_ws/
 wstool init src
 wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
 wstool update -t src
@@ -364,7 +366,7 @@ Use Rviz to set a goal position and orientation.
 - Feeza Khanzada, PhD student, Electrical and Computer Engineering, University of Michigan-Dearborn
 
 ## References
-- https://github.com/husky/husky/tree/melodic-devel
+- https://github.com/husky/husky/tree/noetic-devel
 - https://github.com/agilexrobotics/scout_ros
 - https://docs.trossenrobotics.com/agilex_scout_20_docs/
 - https://docs.trossenrobotics.com/agilex_limo_docs/demos.html 

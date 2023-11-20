@@ -5,7 +5,7 @@ float64 throttle
 # Range 0 to 1, 1 is max brake
 float64 brake
 # Range -1 to +1, +1 is maximum left turn
-float64 steer
+float64 steering
 
 uint8 NO_COMMAND=0
 uint8 NEUTRAL=1
