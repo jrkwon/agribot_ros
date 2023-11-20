@@ -1,4 +1,4 @@
-# ROS Packages for Intelligent Agricultural Robot (IntAgriBot)
+# ROS Packages for Intelligent Agricultural Robot (agribot_ros)
 
 |     |     |
 | --- | --- |
@@ -9,8 +9,10 @@
 
 ## History
 
-This repo is for Scout (v2) of Agilex. The original code was `scout_ros`, but later several packages were added based on `husky` packages of Clearpath Robotics. 
+The code was from `scout_ros` of Agilex and `husky` packages of Clearpath Robotics. 
 
+* 11/20/2023: Merge the `noetic-devel` branch to `master`
+* 11/16/2023: Start Noetic version
 * 10/29/2023: Add RTabMap example. Tested in the Gazebo simulator.
 * 10/23/2023: Change the build system. `catkin_make` --> `catkin_make_isolated` to support `cartographer`
 * 10/19/2023: Add Gmapping and AMCL test with a simulated 2D LiDAR
