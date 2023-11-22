@@ -137,4 +137,15 @@ Reference:
         </plugin>
     </gazebo>
 
+    <!-- 3D Position Interface for Ground Truth -->
+    <gazebo>
+        <plugin name="p3d" filename="libgazebo_ros_p3d.so">
+        <!-- <robotNamespace>/fusion</robotNamespace> -->
+        <bodyName>base_link</bodyName>
+        <topicName>base_pose_ground_truth</topicName>
+        <frameName>map</frameName>
+        <updateRate>100.0</updateRate>
+        </plugin>
+    </gazebo>
+
 </robot>
