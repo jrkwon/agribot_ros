@@ -1,7 +1,7 @@
 <launch>
 
-  <!-- gen_base_pose: true for e2e data_collection and run_neural -->
-  <arg name="gen_base_pose" default="false"/> 
+  <!-- gen_pose: true for e2e data_collection and run_neural -->
+  <arg name="gen_pose" default="false"/> 
   <arg name="world_name" default="worlds/empty.world"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -20,10 +20,9 @@
     <param name="joy_dev" value="$(optenv SCOUT_JOY_DEVICE /dev/input/js0)"/>
   </node>
 
-  <group if="$(arg gen_base_pose">
-    <node pkg="fake_localization" type="fake_localization" name="fake_localization">
-    <!-- remap from="base_pose_ground_truth" to="/$(arg vehicle)/base_pose_ground_truth"/ -->
-  </node>
+  <group if="$(arg gen_pose)">
+    <node pkg="fake_localization" type="fake_localization" name="fake_localization" />
+  </group>
   
   <include file="$(find scout_gazebo)/launch/spawn_scout.launch">
   </include>
