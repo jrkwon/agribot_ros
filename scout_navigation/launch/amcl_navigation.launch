@@ -36,7 +36,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'scan'))" />
 
   <!--- Run AMCL -->
-  <include file="$(find scout_navigation)/launch/amcl.launch">
+  <include file="$(find scout_navigation)/launch/include/amcl.launch">
     <arg name="scan_topic" value="$(arg scan_topic)" />
   </include>
 
