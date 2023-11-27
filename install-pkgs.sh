@@ -28,3 +28,4 @@ sudo apt install -y ros-$ROS_DISTRO-rviz-imu-plugin
 sudo apt install -y ros-$ROS_DISTRO-gmapping
 sudo apt install -y ros-$ROS_DISTRO-map-server
 sudo apt install -y ros-$ROS_DISTRO-octomap-rviz-plugins
+sudo apt install -y ros-$ROS_DISTRO-fake-localization
