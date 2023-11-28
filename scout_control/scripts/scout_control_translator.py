@@ -37,15 +37,15 @@ class ScoutControlTranslator:
 
         twist_msg = Twist()
 
-        if message.shift_gears == ScoutControl.NEUTRAL:
+        if message.gearshift == ScoutControl.NEUTRAL:
             return
         
-        if message.shift_gears == ScoutControl.FORWARD:
+        if message.gearshift == ScoutControl.FORWARD:
             if message.throttle > 0:
                 twist_msg.linear.x = message.throttle*scale_linear
             elif message.brake > 0:
                 twist_msg.linear.x = -message.brake*scale_linear
-        elif message.shift_gears == ScoutControl.BACKWARD:
+        elif message.gearshift == ScoutControl.BACKWARD:
             if message.throttle > 0:
                 twist_msg.linear.x = -message.throttle*scale_linear
             elif message.brake > 0:
