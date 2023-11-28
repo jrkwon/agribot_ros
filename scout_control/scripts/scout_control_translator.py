@@ -23,17 +23,20 @@ class ScoutControlTranslator:
                                     ScoutControl, self._callback)
         self.pub = rospy.Publisher(rn_config['cmd_vel_topic'], Twist, queue_size=1)
         self.last_published = None
+        # -------------------------------------------------------------------
+        # teleop_twist_joy scaling
+        # default values from teleop_logitech.yaml were used.
+        rospy.loginfo("param name: %s", dc_config['teleop_twist_node_prefix']+'scale_angular')
+        self.scale_linear = rospy.get_param(
+                        dc_config['teleop_twist_node_prefix']+'scale_linear', 0.4)
+        self.scale_angular = rospy.get_param(
+                        dc_config['teleop_twist_node_prefix']+'scale_angular', 0.6)
+        rospy.loginfo("scale_linear: %.2f, scale_angular: %.2f", 
+                      self.scale_linear, self.scale_angular)
 
     def _callback(self, message):
         rospy.logdebug("scout_control_translater received %s", message)
 
-        # -------------------------------------------------------------------
-        # teleop_twist_joy scaling
-        # default values from teleop_logitech.yaml were used.
-        scale_linear = rospy.get_param(
-                        dc_config['teleop_twist_node_prefix']+'scale_angular', 0.4)
-        scale_angular = rospy.get_param(
-                        dc_config['teleop_twist_node_prefix']+'scale_linear', 0.6)
 
         twist_msg = Twist()
 
