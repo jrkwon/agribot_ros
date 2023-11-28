@@ -137,10 +137,13 @@ class JoystickTranslator:
 
         if message.buttons[SHIFT_FORWARD] == 1:
             self.control.gearshift = ScoutControl.FORWARD
+            rospy.loginfo("gearshift: FORWARD")
         elif message.buttons[SHIFT_REVERSE] == 1:
             self.control.gearshift = ScoutControl.REVERSE
+            rospy.loginfo("gearshift: REVERSE")
         elif message.buttons[SHIFT_NEUTRAL] == 1:
             self.control.gearshift = ScoutControl.NEUTRAL
+            rospy.loginfo("gearshift: NEUTRAL")
 
         self.control.steering = message.axes[STEERING_AXIS]
         self.last_published = message
