@@ -32,7 +32,29 @@ config = Config.data_collection
 # --------------------
 # Teleop configuration for Logitech F710 Gamepad using the x-pad configuration.
 # Left thumb-stick up/down for velocity, left/right for twist
-# --------------------
+# LB for enable
+# RB for enable-turbo
+#
+#         (LB)                                 (RB)
+#         (LT)                                 (RT)
+#       _=====_            D(  .)X            _=====_
+#      / _____ \                             / _____ \
+#    +.-'_____'-.---------------------------.-'_____'-.+
+#   /   |     |  '.                       .'  |      |   \
+#  / ___| /|\ |___ \ (back)(Lgtc)(strt)  / ___| (Y)  |___ \
+# / |      |      | ;  __           __  ; |              | |
+# | | <---   ---> | | (__) .       (__) | | (X)       (B)| |
+# | |___   |   ___| ; MODE         VIBE ; |___       ____| /
+# |\    | \|/ |    /  _     ___      _   \    | (A) |    /|
+# | \   |_____|  .','" "', |___|  ,'" "', '.  |_____|  .' |
+# |  '-.______.-' /       \ANALOG/       \  '-._____.-'   |
+# |               |  LJ   |------|   RJ  |                |
+# |              /\       /      \       /\               |
+# |             /  '.___.'        '.___.'  \              |
+# |            /                            \             |
+#  \          /                              \           /
+#   \________/                                \_________/
+## --------------------
 # BUTTON         Value
 #   LB             4
 #   RB             5
@@ -54,31 +76,26 @@ config = Config.data_collection
 # Steering
 STEERING_AXIS = 3   # left 1 --> center 0 --> right -1
 
-# Speed control
-BUTTON_A = 0        # speed step down
-BUTTON_B = 1        # steering step up
-BUTTON_X = 2        # steering step down
-BUTTON_Y = 3        # speed step up
+# Buttons
+BUTTON_A = 0        
+BUTTON_B = 1        
+BUTTON_X = 2        
+BUTTON_Y = 3        
 
 # Throttle and Brake: C
 THROTTLE_AXIS = 1   # up from middle   (0 ~ 1)   !! MUST BE CHECKED 
-BRAKE_AXIS = 1      # down from middle ( -1 ~ 0)
-BRAKE_POINT = -0.8  # consider brake is applied if value is greater than this.
+BRAKE_AXIS = 1      # down from middle (0 ~ -1)
+BRAKE_POINT = -0.2  # consider brake is applied if value is greater than this.
 
 # Gear shift
 # to be neutral, bothe SHIFT_FORWARD & SHIFT_REVERSE must be 0
 SHIFT_FORWARD = BUTTON_Y     # forward 1
 SHIFT_REVERSE = BUTTON_A     # reverse 1
-
-# Max speed and steering factor
-MAX_THROTTLE_FACTOR = 10
-MAX_STEERING_FACTOR = 5
-# Default speed and steering factor
-INIT_THROTTLE_FACTOR = 3
-INIT_STERRING_FACTOR = 1
+SHIFT_NEUTRAL = BUTTON_B     # neutral 1
 
 # Small value
 SMALL_VALUE = 0.0001
+
 
 class JoystickTranslator:
     def __init__(self):
@@ -88,47 +105,49 @@ class JoystickTranslator:
         self.last_published_time = rospy.get_rostime()
         self.last_published = None
         self.timer = rospy.Timer(rospy.Duration(1./20.), self.timer_callback)
-        
+        self.control = ScoutControl()
+        self.control.gearshift = ScoutControl.NEUTRAL
+
+
     def timer_callback(self, event):
         if self.last_published and self.last_published_time < rospy.get_rostime() + rospy.Duration(1.0/20.):
             self.callback(self.last_published)
 
+
     def callback(self, message):
-        rospy.logdebug("joy_translater received axes %s",message.axes)
-        if (len(message.axes) <= 2): # not a real joystick. abort
+        rospy.logdebug("joy_translater received axes %s", message.axes)
+        if (len(message.axes) <= 2): # not a real F710 joystick. abort...
             return
 
-        command = ScoutControl()
-        command.header = message.header
+        self.control.header = message.header
 
-        if message.axes[BRAKE_AXIS] > BRAKE_POINT:
-            command.brake = 1.0
+        if message.axes[BRAKE_AXIS] < BRAKE_POINT:
+            self.control.brake = -message.axes[BRAKE_AXIS]
 
         # Note: init value of axes are all zeros
         # --> problem with -1 to 1 range values like brake
         if message.axes[BRAKE_AXIS] > -1*SMALL_VALUE and message.axes[BRAKE_AXIS] < SMALL_VALUE:
-            command.brake = 0.0
+            self.control.brake = 0.0
 
         if message.axes[THROTTLE_AXIS] >= 0:
-            command.throttle = message.axes[THROTTLE_AXIS]
-            command.brake = 0.0
-        else:
-            command.throttle = 0.0
+            self.control.throttle = message.axes[THROTTLE_AXIS]
+            self.control.brake = 0.0
+        else: # braking
+            self.control.throttle = 0.0
 
         if message.buttons[SHIFT_FORWARD] == 1:
-            command.shift_gears = ScoutControl.FORWARD
-        elif message.buttons[SHIFT_FORWARD] == 0 and message.buttons[SHIFT_REVERSE] == 0 :
-            command.shift_gears = ScoutControl.NEUTRAL
+            self.control.gearshift = ScoutControl.FORWARD
         elif message.buttons[SHIFT_REVERSE] == 1:
-            command.shift_gears = ScoutControl.REVERSE
-        else:
-            command.shift_gears = ScoutControl.NO_COMMAND
+            self.control.gearshift = ScoutControl.REVERSE
+        elif message.buttons[SHIFT_NEUTRAL] == 1:
+            self.control.gearshift = ScoutControl.NEUTRAL
 
-        command.steering = message.axes[STEERING_AXIS]
+        self.control.steering = message.axes[STEERING_AXIS]
         self.last_published = message
-        self.pub.publish(command)
+        self.pub.publish(self.control)
+
 
 if __name__ == '__main__':
     rospy.init_node('joystick_translator')
-    t = JoystickTranslator()
+    JoystickTranslator()
     rospy.spin()
