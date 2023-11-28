@@ -117,6 +117,7 @@ class JoystickTranslator:
     def callback(self, message):
         rospy.logdebug("joy_translater received axes %s", message.axes)
         if (len(message.axes) <= 2): # not a real F710 joystick. abort...
+            rospy.loginfo("No proper joystick is attached.")
             return
 
         self.control.header = message.header

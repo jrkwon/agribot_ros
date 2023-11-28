@@ -41,6 +41,7 @@ class ScoutControlTranslator:
         twist_msg = Twist()
 
         if message.gearshift == ScoutControl.NEUTRAL:
+            rospy.loginfo("Message received: gearshift is NEUTRAL (%d).", message.gearshift)
             return
         
         if message.gearshift == ScoutControl.FORWARD:
@@ -56,7 +57,8 @@ class ScoutControlTranslator:
 
         twist_msg.angular.z = message.steering*self.scale_angular
 
-        print(f'Message received: steering: {message.steering}, throttle: {message.throttle}')
+        rospy.loginfo("Message received: gearshift: %d, steering: %2.f, throttle: %.2f.",
+                      message.gearshift, message.steering, message.throttle)
 
         self.last_published = twist_msg
         self.last_published_time = rospy.get_rostime()
