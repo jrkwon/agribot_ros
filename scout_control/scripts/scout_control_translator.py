@@ -45,16 +45,16 @@ class ScoutControlTranslator:
         
         if message.gearshift == ScoutControl.FORWARD:
             if message.throttle > 0:
-                twist_msg.linear.x = message.throttle*scale_linear
+                twist_msg.linear.x = message.throttle*self.scale_linear
             elif message.brake > 0:
-                twist_msg.linear.x = -message.brake*scale_linear
-        elif message.gearshift == ScoutControl.BACKWARD:
+                twist_msg.linear.x = -message.brake*self.scale_linear
+        elif message.gearshift == ScoutControl.REVERSE:
             if message.throttle > 0:
-                twist_msg.linear.x = -message.throttle*scale_linear
+                twist_msg.linear.x = -message.throttle*self.scale_linear
             elif message.brake > 0:
-                twist_msg.linear.x = message.brake*scale_linear
+                twist_msg.linear.x = message.brake*self.scale_linear
 
-        twist_msg.angular.z = message.steering*scale_angular
+        twist_msg.angular.z = message.steering*self.scale_angular
 
         print(f'Message received: steering: {message.steering}, throttle: {message.throttle}')
 
