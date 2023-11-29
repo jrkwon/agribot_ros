@@ -60,6 +60,7 @@ sudo apt install -y ros-$ROS_DISTRO-pointcloud-to-laserscan
 sudo apt install -y ros-$ROS_DISTRO-imu-filter-madgwick
 sudo apt install -y ros-$ROS_DISTRO-rviz-imu-plugin
 sudo apt install -y ros-$ROS_DISTRO-gmapping
+sudo apt install -y ros-$ROS_DISTRO-amcl
 sudo apt install -y ros-$ROS_DISTRO-map-server
 sudo apt install -y ros-$ROS_DISTRO-octomap-rviz-plugins
 sudo apt install -y ros-$ROS_DISTRO-fake-localization
