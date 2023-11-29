@@ -31,9 +31,16 @@ config = Config.data_collection
 # teleop_logitech.yaml
 # --------------------
 # Teleop configuration for Logitech F710 Gamepad using the x-pad configuration.
-# Left thumb-stick up/down for velocity, left/right for twist
-# LB for enable
-# RB for enable-turbo
+# Original User Interface Design in "teleop_twist_joy"
+#   Left thumb-stick up/down for velocity, left/right for twist
+#   LB for enable
+#   RB for enable-turbo
+# New Design for Agribot
+#   Left thumb-stick up/down for velocity, right thumb-stick left/right for twist
+#   Gearshift:
+#       Y: Drove
+#       A: Reverse
+#       B: Neutral
 #
 #         (LB)                                 (RB)
 #         (LT)                                 (RT)

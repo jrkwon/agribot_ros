@@ -3,6 +3,10 @@
 
   <arg name="joy_dev" default="$(optenv SCOUT_JOY_DEVICE /dev/input/js0)" />
   <arg name="joystick" default="true" />
+  <!-- select joystick interface: use_teleop_twist_joy -->
+  <!--   true: teleop_twist_joy: -->
+  <!--   false: joystick_translaotr and scout_control_translator: -->  
+  <arg name="use_teleop_twist_joy" default="true"/>
 
   <group ns="joy_teleop">
 
@@ -17,7 +21,14 @@
 
     <node pkg="joy" type="joy_node" name="joy_node" />
 
-    <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy"/>
+    <group if="$(arg use_teleop_twist_joy)">
+      <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy"/>
+    </group>
+    <group unless="$(arg use_teleop_twist_joy)">
+      <node pkg="scout_control" type="scout_control_translator.py" name="scout_control_translator" />
+      <node pkg="scout_control" type="joystick_translator.py" name="joystick_translator" />
+    </group>
+
   </group>
 
 </launch>

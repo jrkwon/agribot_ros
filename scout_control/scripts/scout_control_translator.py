@@ -57,7 +57,7 @@ class ScoutControlTranslator:
 
         twist_msg.angular.z = message.steering*self.scale_angular
 
-        rospy.loginfo("Message received: gearshift: %d, steering: %2.f, throttle: %.2f.",
+        rospy.loginfo("Message received: gearshift: %d, steering: %.2f, throttle: %.2f.",
                       message.gearshift, message.steering, message.throttle)
 
         self.last_published = twist_msg
