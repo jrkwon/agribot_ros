@@ -266,8 +266,16 @@ The Enable Button (LB) must be held to control directions. When this button is r
 Teleop configuration for Logitech F710 Gamepad 
 using the x-pad configuration.
 
-- Left thumb-stick up/down for velocity, left/right for twist
-- LB for enable
+Original User Interface Design in "teleop_twist_joy"
+   Left thumb-stick up/down for velocity, left/right for twist
+   LB for enable
+   RB for enable-turbo
+New Design for Agribot <-- This is the current default selection
+   Left thumb-stick up/down for velocity, right thumb-stick left/right for twist
+   Gearshift:
+       Y: Drove
+       A: Reverse
+       B: Neutral
 
         (LB)                                 (RB)
         (LT)                                 (RT)
@@ -291,7 +299,7 @@ using the x-pad configuration.
 ```
 
 ```bash
-roslaunch scout_control teleop.launch
+roslaunch scout_control teleop_joystick.launch
 ```
 
 ## SLAM Test
