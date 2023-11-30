@@ -272,12 +272,19 @@ Original User Interface Design in "teleop_twist_joy"
    Left thumb-stick up/down for velocity, left/right for twist
    LB for enable
    RB for enable-turbo
+
 New Design for Agribot <-- This is the current default selection
-   Left thumb-stick up/down for velocity, right thumb-stick left/right for twist
+   Left thumb-stick up for thrtttle
+   Left thumb-stick down for brake
+   NOTE: 
+        No brake is for the Scout robot. 
+        When Left thumb-stick is down with the FORWARD gearshift, 
+        the robot actually moves backward.
+   Right thumb-stick left/right for twist
    LB for enable
    RB for enable-turbo
    Gearshift:
-       Y: Drove
+       Y: Forward
        A: Reverse
        B: Neutral
 

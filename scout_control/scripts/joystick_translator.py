@@ -40,7 +40,7 @@ config = Config.data_collection
 #   LB for enable
 #   RB for enable-turbo
 #   Gearshift:
-#       Y: Drove
+#       Y: Forward
 #       A: Reverse
 #       B: Neutral
 #
@@ -82,34 +82,53 @@ config = Config.data_collection
 # D-pad Horiz.     6
 # D-pad Vert.      7
 
+################################
+# Definition of Buttons and Axes
+BUTTON_A        = 0        
+BUTTON_B        = 1        
+BUTTON_X        = 2        
+BUTTON_Y        = 3       
+BUTTON_LB       = 4
+BUTTON_RB       = 5
+
+LEFT_HORIZ      = 0
+LEFT_VERT       = 1
+RIGHT_HORIZ     = 3
+RIGHT_VERT      = 4
+LEFT_TRIGGER    = 2
+RIGHT_TRIGGER   = 5
+D_PAD_HORIZ     = 6
+D_PAD_VERT      = 7
+
+
+#####################
 # Steering
-STEERING_AXIS = 3   # left 1 --> center 0 --> right -1
+STEERING_AXIS = RIGHT_HORIZ   # left 1 --> center 0 --> right -1
 
-# Buttons
-BUTTON_A = 0        
-BUTTON_B = 1        
-BUTTON_X = 2        
-BUTTON_Y = 3       
-BUTTON_LB = 4
-BUTTON_RB = 5
-
+#####################
 # Enables
 ENABLE = BUTTON_LB
 ENABLE_TURBO = BUTTON_RB
 
-# Throttle and Brake: C
-THROTTLE_AXIS = 1   # up from middle   (0 ~ 1)   !! MUST BE CHECKED 
-BRAKE_AXIS = 1      # down from middle (0 ~ -1)
-BRAKE_POINT = -0.2  # consider brake is applied if value is greater than this.
+#####################
+# Throttle and Brake: 
+# NOTE for Brake
+# --------------
+# No brake is for the Scout robot. 
+# When BRAKE_AXIS is down with the FORWARD gearshift, 
+# the robot actually moves backward.
+THROTTLE_AXIS   = LEFT_VERT   # up from middle   (0 ~ 1)   
+BRAKE_AXIS      = LEFT_VERT      # down from middle (0 ~ -1)
+BRAKE_POINT     = -0.2  # consider brake is applied if value is greater than this.
 
 # Gear shift
 # to be neutral, bothe SHIFT_FORWARD & SHIFT_REVERSE must be 0
-SHIFT_FORWARD = BUTTON_Y     # forward 1
-SHIFT_REVERSE = BUTTON_A     # reverse 1
-SHIFT_NEUTRAL = BUTTON_B     # neutral 1
+SHIFT_FORWARD   = BUTTON_Y     # forward 1
+SHIFT_REVERSE   = BUTTON_A     # reverse 1
+SHIFT_NEUTRAL   = BUTTON_B     # neutral 1
 
 # Small value
-SMALL_VALUE = 0.0001
+SMALL_VALUE     = 0.0001
 
 
 class JoystickTranslator:
