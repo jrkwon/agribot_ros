@@ -140,6 +140,7 @@ class JoystickTranslator:
         self.timer = rospy.Timer(rospy.Duration(1./20.), self.timer_callback)
         self.control = ScoutControl()
         self.control.gearshift = ScoutControl.NEUTRAL
+        self.no_joy_msg_printed = False
 
 
     def timer_callback(self, event):
@@ -150,7 +151,9 @@ class JoystickTranslator:
     def callback(self, message):
         rospy.logdebug("joy_translater received axes %s", message.axes)
         if (len(message.buttons) <= 5): # not a real F710 joystick. abort...
-            rospy.loginfo("No proper joystick is attached.")
+            if self.no_joy_msg_printed is False:
+                rospy.logwarn("No proper joystick is attached.")
+                self.no_joy_msg_printed = True
             return
 
         self.control.header = message.header
