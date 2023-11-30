@@ -11,6 +11,8 @@
 
 The code was from `scout_ros` of Agilex and `husky` packages of Clearpath Robotics. 
 
+* 11/30/2023: Add joystick Enable and Enable Turbo
+* 11/29/2023: Add a new joystick user interface
 * 11/20/2023: Merge the `noetic-devel` branch to `master`
 * 11/16/2023: Start Noetic version
 * 10/29/2023: Add RTabMap example. Tested in the Gazebo simulator.
@@ -272,6 +274,8 @@ Original User Interface Design in "teleop_twist_joy"
    RB for enable-turbo
 New Design for Agribot <-- This is the current default selection
    Left thumb-stick up/down for velocity, right thumb-stick left/right for twist
+   LB for enable
+   RB for enable-turbo
    Gearshift:
        Y: Drove
        A: Reverse

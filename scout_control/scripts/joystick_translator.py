@@ -37,6 +37,8 @@ config = Config.data_collection
 #   RB for enable-turbo
 # New Design for Agribot
 #   Left thumb-stick up/down for velocity, right thumb-stick left/right for twist
+#   LB for enable
+#   RB for enable-turbo
 #   Gearshift:
 #       Y: Drove
 #       A: Reverse
@@ -87,7 +89,13 @@ STEERING_AXIS = 3   # left 1 --> center 0 --> right -1
 BUTTON_A = 0        
 BUTTON_B = 1        
 BUTTON_X = 2        
-BUTTON_Y = 3        
+BUTTON_Y = 3       
+BUTTON_LB = 4
+BUTTON_RB = 5
+
+# Enables
+ENABLE = BUTTON_LB
+ENABLE_TURBO = BUTTON_RB
 
 # Throttle and Brake: C
 THROTTLE_AXIS = 1   # up from middle   (0 ~ 1)   !! MUST BE CHECKED 
@@ -108,7 +116,6 @@ class JoystickTranslator:
     def __init__(self):
         self.sub = rospy.Subscriber(config['joystick_topic'], Joy, self.callback)
         self.pub = rospy.Publisher(config['vehicle_control_topic'], ScoutControl, queue_size=1)
-        #self.pub = rospy.Publisher('scout', ScoutControl, queue_size=1)
         self.last_published_time = rospy.get_rostime()
         self.last_published = None
         self.timer = rospy.Timer(rospy.Duration(1./20.), self.timer_callback)
@@ -123,11 +130,26 @@ class JoystickTranslator:
 
     def callback(self, message):
         rospy.logdebug("joy_translater received axes %s", message.axes)
-        if (len(message.axes) <= 2): # not a real F710 joystick. abort...
-            rospy.loginfo("No proper joystick is attached.")
+        if (len(message.buttons) <= 5): # not a real F710 joystick. abort...
+            rospy.logwarn("No proper joystick is attached.")
             return
 
         self.control.header = message.header
+
+        ##############################
+        # Check Enable or Enalbe-Turbo 
+        enable = self.control.enable_turbo = False
+        # If both ENABLE and ENABLE_TURBO buttons are pressed at the same time
+        # Consider only ENABLE
+        if message.buttons[ENABLE_TURBO] == 1:
+            self.control.enable_turbo = True
+        if message.buttons[ENABLE] == 1:
+            self.control.enable_turbo = False
+            enable = True
+
+        if enable is False and self.control.enable_turbo is False:
+            rospy.logwarn("Either Enable/Enable-Turbo button should be pressed.")
+            return
 
         if message.axes[BRAKE_AXIS] < BRAKE_POINT:
             self.control.brake = -message.axes[BRAKE_AXIS]
@@ -145,13 +167,13 @@ class JoystickTranslator:
 
         if message.buttons[SHIFT_FORWARD] == 1:
             self.control.gearshift = ScoutControl.FORWARD
-            rospy.loginfo("gearshift: FORWARD")
+            rospy.loginfo("Gearshift: FORWARD")
         elif message.buttons[SHIFT_REVERSE] == 1:
             self.control.gearshift = ScoutControl.REVERSE
-            rospy.loginfo("gearshift: REVERSE")
+            rospy.loginfo("Gearshift: REVERSE")
         elif message.buttons[SHIFT_NEUTRAL] == 1:
             self.control.gearshift = ScoutControl.NEUTRAL
-            rospy.loginfo("gearshift: NEUTRAL")
+            rospy.loginfo("Gearshift: NEUTRAL")
 
         self.control.steering = message.axes[STEERING_AXIS]
         self.last_published = message

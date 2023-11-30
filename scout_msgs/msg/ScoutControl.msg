@@ -13,3 +13,6 @@ uint8 FORWARD=2
 uint8 REVERSE=3
 
 uint8 gearshift
+
+# True when the ENABLE_TURBO button is pressed
+bool enable_turbo
