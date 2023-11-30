@@ -16,10 +16,10 @@
     <arg name="simulated_robot" default="false" />
     <arg name="odom_topic_name" default="odom" />
     <arg name="pub_tf" default="$(arg pub_tf)" />
-    <!-- select joystick interface: use_teleop_twist_joy -->
-    <!--   true: teleop_twist_joy: -->
-    <!--   false: joystick_translaotr and scout_control_translator: -->  
-    <arg name="use_teleop_twist_joy" default="false"/>
+    <!-- Select joystick interface: is_scout_control -->
+    <!--   true:  joystick_translaotr and scout_control_translator: -->  
+    <!--   false: teleop_twist_joy: -->
+    <arg name="is_scout_control" default="true"/>
 
     <node name="scout_base_node" pkg="scout_base" type="scout_base_node" output="screen" required="true">
         <param name="is_scout_mini" type="bool" value="$(arg is_scout_mini)" />
@@ -38,7 +38,7 @@
 
     <!--Teleop -->
     <include file="$(find scout_control)/launch/teleop_joystick.launch">
-        <arg name="use_teleop_twist_joy"    value="$(arg use_teleop_twist_joy)"/>
+        <arg name="is_scout_control"    value="$(arg is_scout_control)"/>
     </include>
 
 </launch>

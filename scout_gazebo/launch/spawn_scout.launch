@@ -39,10 +39,10 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <!-- Optionally disable teleop control -->
   <arg name="joystick" default="true" />
 
-  <!-- select joystick interface: use_teleop_twist_joy -->
-  <!--   true: teleop_twist_joy: -->
-  <!--   false: joystick_translaotr and scout_control_translator: -->
-  <arg name="use_teleop_twist_joy" default="false"/>
+  <!-- Select joystick interface: is_scout_control -->
+  <!--   true:  joystick_translaotr and scout_control_translator: -->  
+  <!--   false: teleop_twist_joy: -->
+  <arg name="is_scout_control" default="true"/>
 
   <group ns="$(arg robot_namespace)">
 
@@ -68,7 +68,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
       </include>
       <include file="$(find scout_control)/launch/teleop_joystick.launch">
         <arg name="joystick" value="$(arg joystick)" />
-        <arg name="use_teleop_twist_joy" value="$(arg use_teleop_twist_joy)"/>
+        <arg name="is_scout_control" value="$(arg is_scout_control)"/>
       </include>
     <!-- /group -->
 
