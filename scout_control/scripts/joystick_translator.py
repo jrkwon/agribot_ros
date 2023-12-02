@@ -170,7 +170,7 @@ class JoystickTranslator:
             enable = True
 
         if enable is False and self.control.enable_turbo is False:
-            rospy.logwarn("Either Enable/Enable-Turbo button should be pressed.")
+            rospy.loginfo("Either Enable/Enable-Turbo button should be pressed.")
             return
 
         if message.axes[BRAKE_AXIS] < BRAKE_POINT:
