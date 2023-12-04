@@ -139,7 +139,8 @@ class JoystickTranslator:
         self.last_published = None
         self.timer = rospy.Timer(rospy.Duration(1./20.), self.timer_callback)
         self.control = ScoutControl()
-        self.control.gearshift = ScoutControl.NEUTRAL
+        self.control.gearshift =  ScoutControl.NEUTRAL
+        #self.last_gearshift = self.control.gearshift
         self.no_joy_msg_printed = False
 
 
@@ -158,6 +159,21 @@ class JoystickTranslator:
 
         self.control.header = message.header
 
+        if message.buttons[SHIFT_FORWARD] == 1:
+            self.control.gearshift = ScoutControl.FORWARD
+            rospy.loginfo("Gearshift: FORWARD")
+        elif message.buttons[SHIFT_REVERSE] == 1:
+            self.control.gearshift = ScoutControl.REVERSE
+            rospy.loginfo("Gearshift: REVERSE")
+        elif message.buttons[SHIFT_NEUTRAL] == 1:
+            self.control.gearshift = ScoutControl.NEUTRAL
+            rospy.loginfo("Gearshift: NEUTRAL")
+
+        # if self.control.gearshift != self.last_gearshift:
+        #     self.last_gearshift = self.control.gearshift
+        #     rospy.loginfo("Gearshift: %s --> %s", 
+        #                   const.GEARSHIFTS[self.last_gearshift], const.GEARSHIFTS[message.gearshift])
+
         ##############################
         # Check Enable or Enalbe-Turbo 
         enable = self.control.enable_turbo = False
@@ -165,12 +181,13 @@ class JoystickTranslator:
         # Consider only ENABLE
         if message.buttons[ENABLE_TURBO] == 1:
             self.control.enable_turbo = True
+
         if message.buttons[ENABLE] == 1:
             self.control.enable_turbo = False
             enable = True
 
         if enable is False and self.control.enable_turbo is False:
-            rospy.loginfo("Either Enable/Enable-Turbo button should be pressed.")
+            #rospy.loginfo("Either Enable/Enable-Turbo button should be pressed.")
             return
 
         if message.axes[BRAKE_AXIS] < BRAKE_POINT:
@@ -186,16 +203,6 @@ class JoystickTranslator:
             self.control.brake = 0.0
         else: # braking
             self.control.throttle = 0.0
-
-        if message.buttons[SHIFT_FORWARD] == 1:
-            self.control.gearshift = ScoutControl.FORWARD
-            rospy.loginfo("Gearshift: FORWARD")
-        elif message.buttons[SHIFT_REVERSE] == 1:
-            self.control.gearshift = ScoutControl.REVERSE
-            rospy.loginfo("Gearshift: REVERSE")
-        elif message.buttons[SHIFT_NEUTRAL] == 1:
-            self.control.gearshift = ScoutControl.NEUTRAL
-            rospy.loginfo("Gearshift: NEUTRAL")
 
         self.control.steering = message.axes[STEERING_AXIS]
         self.last_published = message

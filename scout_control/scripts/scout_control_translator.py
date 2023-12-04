@@ -10,19 +10,6 @@ from config import Config
 dc_config = Config.data_collection
 rn_config = Config.run_neural
 
-###################
-# ScoutControl.msg
-# ----------------
-# uint8 NO_COMMAND=0
-# uint8 NEUTRAL=1
-# uint8 FORWARD=2
-# uint8 REVERSE=3
-
-GEARSHIFTS = {
-    ScoutControl.NEUTRAL: "Neutral",
-    ScoutControl.FORWARD: "Forward",
-    ScoutControl.REVERSE: "Reverse"
-}
 
 ##############################################################################
 # Topic translator
@@ -37,6 +24,8 @@ class ScoutControlTranslator:
                                     ScoutControl, self._callback)
         self.pub = rospy.Publisher(rn_config['cmd_vel_topic'], Twist, queue_size=1)
         self.last_published = None
+        self.last_gearshift = ScoutControl.NEUTRAL # initial gearshift
+
         # -------------------------------------------------------------------
         # teleop_twist_joy scaling
         # default values from teleop_logitech.yaml were used.
@@ -58,9 +47,12 @@ class ScoutControlTranslator:
         # get scale values
         scale_linear  = self.scale_linear_turbo if message.enable_turbo else self.scale_linear
         scale_angular = self.scale_angular_turbo if message.enable_turbo else self.scale_angular
-        
+
+        if message.gearshift != self.last_gearshift:
+            rospy.loginfo("Gearshift: %s --> %s", 
+                          const.GEARSHIFTS[self.last_gearshift], const.GEARSHIFTS[message.gearshift])
+        self.last_gearshift = message.gearshift
         if message.gearshift == ScoutControl.NEUTRAL:
-            rospy.logwarn("Gearshift: %s.", GEARSHIFTS[message.gearshift])
             return
         
         if message.gearshift == ScoutControl.FORWARD:
@@ -78,7 +70,7 @@ class ScoutControlTranslator:
 
         rospy.loginfo("Turbo: %s, Gearshift: %s, Steering: %.2f, Throttle: %.2f.",
                       "Yes" if message.enable_turbo else "No",
-                      GEARSHIFTS[message.gearshift], message.steering, message.throttle)
+                      const.GEARSHIFTS[message.gearshift], message.steering, message.throttle)
 
         self.last_published = twist_msg
         self.last_published_time = rospy.get_rostime()
