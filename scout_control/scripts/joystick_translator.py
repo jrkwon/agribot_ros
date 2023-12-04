@@ -36,7 +36,7 @@ config = Config.data_collection
 #   LB for enable
 #   RB for enable-turbo
 # New Design for Agribot
-#   Left thumb-stick up/down for velocity, right thumb-stick left/right for twist
+#   LJ thumb-stick up/down for velocity, LJ thumb-stick left/right for twist
 #   LB for enable
 #   RB for enable-turbo
 #   Gearshift:
@@ -103,7 +103,7 @@ D_PAD_VERT      = 7
 
 #####################
 # Steering
-STEERING_AXIS = RIGHT_HORIZ   # left 1 --> center 0 --> right -1
+STEERING_AXIS = LEFT_HORIZ   # left 1 --> center 0 --> right -1
 
 #####################
 # Enables
