@@ -475,16 +475,6 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='orchard_geom'>
-        <pose>0 0 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='orchard_world_link'>
-          <pose>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
       <model name='pine_tree'>
         <pose>2.56372 15.6 0 0 -0 0.268099</pose>
         <scale>1 1 1</scale>
@@ -8170,97 +8160,5 @@
       <pose>44.7773 35.4869 0 0 -0 0</pose>
     </model>
     <gravity>0 0 -9.8</gravity>
-    <model name='orchard_geom'>
-      <link name='orchard_world_link'>
-        <inertial>
-          <pose>0 0 0 0 -0 0</pose>
-          <mass>1</mass>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-        </inertial>
-        <collision name='orchard_world_link_collision'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/bimi/users/jaerock/agribot/catkin_ws/src/agribot_ros/scout_gazebo/meshes/orchard_world.dae</uri>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='orchard_world_link_collision_1'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/bimi/users/jaerock/agribot/catkin_ws/src/agribot_ros/scout_gazebo/meshes/orchard_trunks.dae</uri>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='orchard_world_link_visual'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/bimi/users/jaerock/agribot/catkin_ws/src/agribot_ros/scout_gazebo/meshes/orchard_world.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <visual name='orchard_world_link_visual_1'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/bimi/users/jaerock/agribot/catkin_ws/src/agribot_ros/scout_gazebo/meshes/orchard_trunks.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <visual name='orchard_world_link_visual_2'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/bimi/users/jaerock/agribot/catkin_ws/src/agribot_ros/scout_gazebo/meshes/orchard_leaves.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <static>1</static>
-      <pose>0 0 0 0 -0 0</pose>
-    </model>
   </world>
 </sdf>
