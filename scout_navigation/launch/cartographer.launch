@@ -15,7 +15,7 @@
 -->
 
 <launch>
-    <arg name="scan_topic" default="/scan" />
+    <arg name="scan_topic" default="$(eval optenv('SCOUT_LASER_TOPIC', 'scan'))" />
     <arg name="imu_topic"  default="/imu/data" />
     <arg name="odom_topic" default="/odometry/filtered" />
 
