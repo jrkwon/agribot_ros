@@ -1,5 +1,8 @@
 sudo apt install -y build-essential
 sudo apt install -y libasio-dev
+sudo apt install -y lua5.2
+sudo apt install -y liblua5.2-dev
+sudo apt install -y libceres-dev
 sudo apt install -y ros-melodic-teleop-twist-keyboard
 sudo apt install -y ros-melodic-ros-control
 sudo apt install -y ros-melodic-ros-controllers
