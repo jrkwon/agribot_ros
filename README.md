@@ -90,7 +90,7 @@ sudo apt-get install -y python-wstool python-rosdep ninja-build stow
 
 ```bash
 mkdir -p carto/catkin_ws
-cd ~/catkin_ws/
+cd carto/catkin_ws/
 wstool init src
 wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
 wstool update -t src
@@ -167,9 +167,17 @@ limitations under the License.
 </package>
 ```
 
-Build and Install
+Build `cartographer` SDK and `cartographer_ros`
 ```bash
 catkin_make_isolated --install --use-ninja
+```
+
+Install `cartographer` SDK and `cartographer_ros` to the systems's `ros` directory
+```bash
+sudo cp -r install_isolated/lib     /opt/ros/$ROS_DISTRO/lib
+sudo cp -r install_isolated/include /opt/ros/$ROS_DISTRO/include
+sudo cp -r install_isolated/bin     /opt/ros/$ROS_DISTRO/bin
+sudo cp -r install_isolated/share   /opt/ros/$ROS_DISTRO/share
 ```
 
 
