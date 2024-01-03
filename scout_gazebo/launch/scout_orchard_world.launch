@@ -3,12 +3,11 @@
 
     <arg name="rviz" default="true"/>
     <arg name="platform" default="scout" />
-    <arg name="x" default="2.816"/>
-    <arg name="y" default="32.18"/>
-    <arg name="z" default="0.162"/>
-    <arg name="roll" default="0.066482" />
-    <arg name="pitch" default="0.017475" />
-    <arg name="yaw" default="0.038139" />
+    <!-- default robot pose -->
+    <arg name="x" default="11.0"/>
+    <arg name="y" default="11.0"/>
+    <arg name="z" default="0.2"/>
+    <arg name="yaw" default="0.0" />
 
     <arg name="use_sim_time" default="true" />
     <arg name="gui" default="true" />
