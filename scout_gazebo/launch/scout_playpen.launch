@@ -25,8 +25,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 -->
 <launch>
 
-    <!-- gen_pose: true for e2e data_collection and run_neural -->
-    <arg name="gen_pose" default="false"/> 
     <arg name="rviz" default="true"/>
     <arg name="robot_namespace" default="/"/>
     <arg name="world_name" default="$(find scout_gazebo)/worlds/clearpath_playpen.world"/>
@@ -48,10 +46,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <node pkg="joy" type="joy_node" name="joy_node0">
       <param name="joy_dev" value="$(optenv SCOUT_JOY_DEVICE /dev/input/js0)"/>
     </node>
-
-    <group if="$(arg gen_pose)">
-      <node pkg="fake_localization" type="fake_localization" name="fake_localization" />
-    </group>
 
     <include file="$(find scout_gazebo)/launch/spawn_scout.launch"></include>
         

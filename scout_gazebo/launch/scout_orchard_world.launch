@@ -1,8 +1,6 @@
 <launch>
     <param name="orchard_geom" command="$(find xacro)/xacro --inorder '$(find scout_gazebo)/urdf/orchard_geometry.urdf.xacro'" />
 
-    <!-- gen_pose: true for e2e data_collection and run_neural -->
-    <arg name="gen_pose" default="false"/> 
     <arg name="rviz" default="true"/>
     <arg name="platform" default="scout" />
     <arg name="x" default="2.816"/>
@@ -33,10 +31,6 @@
     <node pkg="joy" type="joy_node" name="joy_node0">
       <param name="joy_dev" value="$(optenv SCOUT_JOY_DEVICE /dev/input/js0)"/>
     </node>
-
-    <group if="$(arg gen_pose)">
-      <node pkg="fake_localization" type="fake_localization" name="fake_localization" />
-    </group>
 
     <node name="orchard_gazebo_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model orchard_geom -param orchard_geom -x 0 -y 0 -z 0 -Y 0" />
 
