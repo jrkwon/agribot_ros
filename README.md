@@ -80,105 +80,128 @@ sudo apt install -y ros-melodic-octomap-rviz-plugins
 
 ### Install Cartographer SDK and Cartographer ROS
 
-```bash
-sudo apt update
-```
+### Install Cartographer SDK and Cartographer ROS
+
+Follow the official link for Cartographer installation if there is any discrepancy.
+
+- Install some ROS build tools if you haven't.
+    ```bash
+    sudo apt update
+    ```
+
+    ```bash
+    sudo apt-get install -y python3-wstool python3-rosdep ninja-build stow
+    ```
+
+- Download source code and prepare worksapce. 
+Since the source code doesn't need to stay after installation, you can do this at your temporary directory, such as `Download`.
+
+    ```bash
+    mkdir -p carto/catkin_ws
+    cd carto/catkin_ws/
+    wstool init src
+    wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
+    wstool update -t src
+    ```
+
+- Commment out `libabsl-dev` in `src/cartographer/package.xml`.
+
+    ```xml
+    <?xml version="1.0"?>
+    <!--
+    Copyright 2016 The Cartographer Authors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+
+    <package format="3">
+    <name>cartographer</name>
+    <version>2.0.0</version>
+    <description>
+        Cartographer is a system that provides real-time simultaneous localization
+        and mapping (SLAM) in 2D and 3D across multiple platforms and sensor
+        configurations.
+    </description>
+    <maintainer email="cartographer-owners@googlegroups.com">
+        The Cartographer Authors
+    </maintainer>
+    <license>Apache 2.0</license>
+
+    <url>https://github.com/cartographer-project/cartographer</url>
+
+    <author email="google-cartographer@googlegroups.com">
+        The Cartographer Authors
+    </author>
+
+    <buildtool_depend>cmake</buildtool_depend>
+
+    <build_depend>git</build_depend>
+    <build_depend>google-mock</build_depend>
+    <build_depend>gtest</build_depend>
+    <build_depend>python3-sphinx</build_depend>
+
+    <depend>libboost-iostreams-dev</depend>
+    <depend>eigen</depend>
+    <!-- depend>libabsl-dev</depend -->
+    <depend>libcairo2-dev</depend>
+    <depend>libceres-dev</depend>
+    <depend>libgflags-dev</depend>
+    <depend>libgoogle-glog-dev</depend>
+    <depend>lua5.2-dev</depend>
+    <depend>protobuf-dev</depend>
+
+    <export>
+        <build_type>cmake</build_type>
+    </export>
+    </package>
+    ```
+
+- Install dependent ROS modules.
+    ```bash
+    rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
+    ```
+
+    Cartographer uses the `abseil-cpp` library that needs to be manually installed using this script:
+    ```bash
+    src/cartographer/scripts/install_abseil.sh
+    ```
+
+
+
+
+- Build `cartographer` SDK and `cartographer_ros`
+    ```bash
+    catkin_make_isolated --install --use-ninja
+    ```
+
+    Install `cartographer` SDK and `cartographer_ros` to the systems's `ros` directory
+    ```bash
+    sudo cp -r install_isolated/lib/.     /opt/ros/$ROS_DISTRO/lib/.
+    sudo cp -r install_isolated/include/. /opt/ros/$ROS_DISTRO/include/.
+    sudo cp -r install_isolated/bin/.     /opt/ros/$ROS_DISTRO/bin/.
+    sudo cp -r install_isolated/share/.   /opt/ros/$ROS_DISTRO/share/.
+    ```
+
+==Note==
+
+If you installed `ceres-solver` from source code previously, you must uninstall it before building the Cartographer.
 
 ```bash
-sudo apt-get install -y python-wstool python-rosdep ninja-build stow
+cd path-to-the-ceres-solver-bin
+sudo make uninstall
 ```
 
-```bash
-mkdir -p carto/catkin_ws
-cd carto/catkin_ws/
-wstool init src
-wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
-wstool update -t src
-```
-
-```bash
-rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
-```
-
-Cartographer uses the `abseil-cpp` library that needs to be manually installed using this script:
-```bash
-src/cartographer/scripts/install_abseil.sh
-```
-
-Commment out `libabsl-dev` in `package.xml` inside the `cartographer` directory.
-
-```xml
-<?xml version="1.0"?>
-<!--
-Copyright 2016 The Cartographer Authors
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
-<package format="3">
-<name>cartographer</name>
-<version>2.0.0</version>
-<description>
-    Cartographer is a system that provides real-time simultaneous localization
-    and mapping (SLAM) in 2D and 3D across multiple platforms and sensor
-    configurations.
-</description>
-<maintainer email="cartographer-owners@googlegroups.com">
-    The Cartographer Authors
-</maintainer>
-<license>Apache 2.0</license>
-
-<url>https://github.com/cartographer-project/cartographer</url>
-
-<author email="google-cartographer@googlegroups.com">
-    The Cartographer Authors
-</author>
-
-<buildtool_depend>cmake</buildtool_depend>
-
-<build_depend>git</build_depend>
-<build_depend>google-mock</build_depend>
-<build_depend>gtest</build_depend>
-<build_depend>python3-sphinx</build_depend>
-
-<depend>libboost-iostreams-dev</depend>
-<depend>eigen</depend>
-<!-- depend>libabsl-dev</depend -->
-<depend>libcairo2-dev</depend>
-<depend>libceres-dev</depend>
-<depend>libgflags-dev</depend>
-<depend>libgoogle-glog-dev</depend>
-<depend>lua5.2-dev</depend>
-<depend>protobuf-dev</depend>
-
-<export>
-    <build_type>cmake</build_type>
-</export>
-</package>
-```
-
-Build `cartographer` SDK and `cartographer_ros`
-```bash
-catkin_make_isolated --install --use-ninja
-```
-
-Install `cartographer` SDK and `cartographer_ros` to the systems's `ros` directory
-```bash
-sudo cp -r install_isolated/lib     /opt/ros/$ROS_DISTRO/lib
-sudo cp -r install_isolated/include /opt/ros/$ROS_DISTRO/include
-sudo cp -r install_isolated/bin     /opt/ros/$ROS_DISTRO/bin
-sudo cp -r install_isolated/share   /opt/ros/$ROS_DISTRO/share
-```
+Otherwise, you would see some `CMake` errors with `CUDA::xxx` messsages when you trey to build the Cartographer.
 
 
 ## Packages
