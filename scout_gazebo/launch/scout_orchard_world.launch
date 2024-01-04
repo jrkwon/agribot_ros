@@ -4,9 +4,9 @@
     <arg name="rviz" default="true"/>
     <arg name="platform" default="scout" />
     <!-- default robot pose -->
-    <arg name="x" default="11.0"/>
-    <arg name="y" default="11.0"/>
-    <arg name="z" default="0.2"/>
+    <arg name="x" default="2.0"/>
+    <arg name="y" default="36.0"/>
+    <arg name="z" default="0.146336"/>
     <arg name="yaw" default="0.0" />
 
     <arg name="use_sim_time" default="true" />
