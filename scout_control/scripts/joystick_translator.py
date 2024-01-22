@@ -19,10 +19,16 @@ import rospy
 from scout_msgs.msg import ScoutControl
 from sensor_msgs.msg import Joy
 
-import const
-from config import Config
+#import const
+try:
+    from config import Config
+    config = Config.data_collection
+    joystick_topic = config['joystick_topic']
+    vehicle_control_topic = config['vehicle_control_topic']
+except ModuleNotFoundError as err: # for legacy code
+    joystick_topic = '/joy_teleop/joy'
+    vehicle_control_topic = '/scout_control'
 
-config = Config.data_collection
 
 #######################################
 ## Logitech F710 
@@ -133,8 +139,8 @@ SMALL_VALUE     = 0.0001
 
 class JoystickTranslator:
     def __init__(self):
-        self.sub = rospy.Subscriber(config['joystick_topic'], Joy, self.callback)
-        self.pub = rospy.Publisher(config['vehicle_control_topic'], ScoutControl, queue_size=1)
+        self.sub = rospy.Subscriber(joystick_topic, Joy, self.callback)
+        self.pub = rospy.Publisher(vehicle_control_topic, ScoutControl, queue_size=1)
         self.last_published_time = rospy.get_rostime()
         self.last_published = None
         self.timer = rospy.Timer(rospy.Duration(1./20.), self.timer_callback)
